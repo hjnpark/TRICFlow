@@ -1,0 +1,6 @@
+2026-06-22:18:59:06,917 INFO     [psi4.driver.task_planner:259] PLANNING Atomic:  keywords={'GUESS': 'SAD', 'MAXITER': 300, 'function_kwargs': {}}
+2026-06-22:18:59:06,919 INFO     [psi4.driver.driver:638] Compute gradient(): method=hf, basis=3-21g, molecule=default, nre=24.43540814807339
+2026-06-22:18:59:07,379 INFO     [psi4.driver.driver:641] Return gradient(): -92.32949371194502
+2026-06-22:18:59:07,379 INFO     [psi4.driver.driver:642] [[ 0.01827794  0.00726339 -0.        ]
+ [-0.01969573  0.01225161  0.        ]
+ [ 0.0014178  -0.01951499  0.        ]]

@@ -1,0 +1,256 @@
+geometric-optimize called with the following command line:
+/home/heepark/dev/geomeTRIC/geometric/optimize.py /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/ts_run/psi4.in --engine psi4 --coordsys tric --coords /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/ts_run/coords.xyz --nt 4 --transition yes --hessian first+last --prefix ts
+
+                                        [91m())))))))))))))))/[0m                     
+                                    [91m())))))))))))))))))))))))),[0m                
+                                [91m*)))))))))))))))))))))))))))))))))[0m             
+                        [94m#,[0m    [91m()))))))))/[0m                [91m.)))))))))),[0m          
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m.))))))))*[0m        
+                      [94m*%%%%%%,[0m  [91m))[0m              [93m..[0m              [91m,))))))).[0m      
+                        [94m*%%%%%%,[0m         [93m***************/.[0m        [91m.)))))))[0m     
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m/*********************.[0m       [91m)))))))[0m    
+              [94m.%%%%%%#[0m      [94m*%%%%%%,[0m  [93m*******/,[0m     [93m**********,[0m      [91m.))))))[0m   
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**[0m              [93m********[0m      [91m.))))))[0m  
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m,******[0m      [91m/)))))[0m  
+        [94m%%%%%%[0m      [94m.%%%%%%#[0m      [94m*%%%%%%,[0m    [92m,/////.[0m       [93m******[0m      [91m))))))[0m 
+      [94m#%[0m      [94m%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////,[0m      [93m*****/[0m     [91m,)))))[0m 
+    [94m#%%[0m  [94m%%%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+  [94m#%%%%.[0m      [94m%%%%%#[0m      [94m/%%%%%%*[0m      [94m#%%%%%%[0m   [92m/////)[0m     [93m******[0m      [91m))))),[0m
+    [94m#%%%%##%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+      [94m##[0m     [94m%%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////.[0m      [93m*****/[0m     [91m,)))))[0m 
+        [94m#%%%%#[0m      [94m/%%%%%%/[0m      [94m(%%%%%%[0m      [92m/)/)//[0m       [93m******[0m      [91m))))))[0m 
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m*******[0m      [91m))))))[0m  
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**.[0m             [93m/*******[0m      [91m.))))))[0m  
+              [94m*%%%%%%/[0m      [94m(%%%%%%[0m   [93m********/*..,*/*********[0m       [91m*))))))[0m   
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m*********************/[0m        [91m)))))))[0m    
+                        [94m*%%%%%%,[0m         [93m,**************/[0m         [91m,))))))/[0m     
+                      [94m(%%%%%%[0m   [91m()[0m                              [91m))))))))[0m       
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m,)))))))),[0m        
+                        [94m#,[0m    [91m())))))))))[0m                [91m,)))))))))).[0m          
+                                 [91m()))))))))))))))))))))))))))))))/[0m             
+                                    [91m())))))))))))))))))))))))).[0m                
+                                         [91m())))))))))))))),[0m                     
+
+-=# [1;94m geomeTRIC started. Version: 1.1.1+30.g72efecb.dirty [0m #=-
+Current date and time: 2026-06-19 06:39:21
+#========================================================#
+#| [92m    Arguments passed to driver run_optimizer():     [0m |#
+#========================================================#
+coords                    /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/ts_run/coords.xyz 
+coordsys                  tric 
+engine                    psi4 
+hessian                   first+last 
+input                     /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/ts_run/psi4.in 
+nt                        4 
+prefix                    ts 
+transition                True 
+----------------------------------------------------------
+ Transition state optimization requested.
+ Hessian will be computed for both first and last step.
+Psi4 engine selected. Expecting Psi4 input for gradient calculation.
+Requested bond order-based connectivity but it is not available in the current engine
+Bonds will be generated from interatomic distances less than 1.20 times sum of covalent radii
+39 internal coordinates being used (instead of 39 Cartesians)
+Internal coordinate system (atoms numbered from 1):
+Distance 1-2
+Distance 1-6
+Distance 3-4
+Distance 3-8
+Distance 3-9
+Distance 4-5
+Distance 4-10
+Distance 5-6
+Distance 5-11
+Distance 7-8
+Distance 7-12
+Distance 8-13
+Angle 4-3-9
+Angle 8-3-9
+Angle 3-4-10
+Angle 5-4-10
+Angle 4-5-11
+Angle 6-5-11
+Angle 1-6-5
+Angle 3-8-13
+Angle 7-8-13
+LinearAngleX 2-1-6
+LinearAngleY 2-1-6
+LinearAngleX 8-7-12
+LinearAngleY 8-7-12
+Out-of-Plane 3-4-8-9
+Out-of-Plane 4-3-5-10
+Out-of-Plane 5-4-6-11
+Out-of-Plane 8-3-7-13
+Dihedral 8-3-4-5
+Dihedral 8-3-4-10
+Dihedral 9-3-4-5
+Dihedral 9-3-4-10
+Dihedral 4-3-8-7
+Dihedral 4-3-8-13
+Dihedral 9-3-8-7
+Dihedral 9-3-8-13
+Dihedral 3-4-5-6
+Dihedral 3-4-5-11
+Dihedral 10-4-5-6
+Dihedral 10-4-5-11
+Dihedral 4-5-6-1
+Dihedral 11-5-6-1
+Translation-X 1-13
+Translation-Y 1-13
+Translation-Z 1-13
+Rotation-A 1-13
+Rotation-B 1-13
+Rotation-C 1-13
+<class 'geometric.internal.Distance'> : 12
+<class 'geometric.internal.Angle'> : 9
+<class 'geometric.internal.LinearAngle'> : 4
+<class 'geometric.internal.OutOfPlane'> : 4
+<class 'geometric.internal.Dihedral'> : 14
+<class 'geometric.internal.TranslationX'> : 1
+<class 'geometric.internal.TranslationY'> : 1
+<class 'geometric.internal.TranslationZ'> : 1
+<class 'geometric.internal.RotationA'> : 1
+<class 'geometric.internal.RotationB'> : 1
+<class 'geometric.internal.RotationC'> : 1
+#===================================================================================#
+#| [91mNote: Detected the use of DFT for a system containing only one fragment.[0m        |#
+#|                                                                                 |#
+#| DFT calculations that use small to medium-sized grids can sometimes result in   |#
+#| energies and/or gradients that are not translationally/rotationally invariant,  |#
+#| which varies depending on the QC program used.                                  |#
+#|                                                                                 |#
+#| Spurious translation/rotation contributions to the energy and/or gradient       |#
+#| may cause convergence failure that is observable as 'movement' or 'tumbling'    |#
+#| of the molecule in the optimization output. If observed, rerun the calculation  |#
+#| using --coordsys dlc and --subfrctor 2. It will project out overall translation |#
+#| and rotation from the optimization space.                                       |#
+#===================================================================================#
+> ===== Optimization Info: ====
+> Job type: Transition state optimization
+> Maximum number of optimization cycles: 300
+> Initial / maximum trust radius (Angstrom): 0.010 / 0.030
+> Convergence Criteria:
+> Will converge when all 5 criteria are reached:
+>  |Delta-E| < 1.00e-06
+>  RMS-Grad  < 3.00e-04
+>  Max-Grad  < 4.50e-04
+>  RMS-Disp  < 1.20e-03
+>  Max-Disp  < 1.80e-03
+> === End Optimization Info ===
+Valid Hessian data not found, calculating from scratch.
+Calculating Cartesian Hessian using finite difference on Cartesian gradients (78 grads total)
+0 / 78 gradient calculations complete
+10 / 78 gradient calculations complete
+20 / 78 gradient calculations complete
+30 / 78 gradient calculations complete
+40 / 78 gradient calculations complete
+50 / 78 gradient calculations complete
+60 / 78 gradient calculations complete
+70 / 78 gradient calculations complete
+78 / 78 gradient calculations complete
+>> Initial Cartesian Hessian Eigenvalues
+Hessian Eigenvalues:  -4.955e-02 -6.543e-05 -7.308e-06  1.600e-05  4.517e-05  5.070e-05  8.736e-05
+ 1.718e-04  1.493e-03  5.956e-03  6.939e-03  1.443e-02    .....    1.379e+00  1.618e+00  2.494e+00
+
+== Summary of harmonic free energy analysis ==
+Note: Rotational symmetry is set to 1 regardless of true symmetry
+1 Imaginary Frequencies (cm^-1): 714.013i
+Note: Free energy does not include contribution from imaginary mode(s)
+
+Free energy contributions calculated at @ 300.00 K:
+Zero-point vibrational energy:                                   56.9973 kcal/mol 
+H   (Trans + Rot + Vib = Tot):   1.4904 +   0.8942 +   3.2820 =   5.6667 kcal/mol 
+S   (Trans + Rot + Vib = Tot):  39.9237 +  28.0625 +  21.7270 =  89.7131 cal/mol/K
+TS  (Trans + Rot + Vib = Tot):  11.9771 +   8.4187 +   6.5181 =  26.9139 kcal/mol 
+
+Ground State Electronic Energy    : E0                        =  -340.96550319 au (   -213959.0836 kcal/mol)
+Free Energy Correction (Harmonic) : ZPVE + [H-TS]_T,R,V       =     0.05697133 au (        35.7500 kcal/mol)
+Gibbs Free Energy (Harmonic)      : E0 + ZPVE + [H-TS]_T,R,V  =  -340.90853187 au (   -213923.3335 kcal/mol)
+
+Vibrational analysis written to ts.vdata_first
+Step    0 : Gradient = 8.213e-04/1.294e-03 (rms/max) Energy = -340.9655031948
+Hessian Eigenvalues:  -6.188e-02 -4.935e-05 -2.513e-05 -1.285e-05 -1.047e-06  1.482e-05  4.288e-05
+ 1.177e-03  5.162e-03  1.336e-02  2.200e-02  2.329e-02    .....    6.794e-01  1.164e+00  1.384e+00
+Step    1 : Displace = [0m1.014e-02[0m/[0m2.493e-02[0m (rms/max) Trust = 1.000e-02 (=) Grad = [0m5.320e-04[0m/[0m1.042e-03[0m (rms/max) E (change) = -340.9655847222 ([0m-8.153e-05[0m) Quality = [0m0.998[0m
+Hessian Eigenvalues:  -6.199e-02 -6.330e-05 -3.604e-05 -1.166e-06  3.162e-06  1.412e-05  6.474e-05
+ 1.501e-03  5.188e-03  1.333e-02  2.197e-02  2.327e-02    .....    6.795e-01  1.164e+00  1.385e+00
+Step    2 : Displace = [0m1.436e-02[0m/[0m3.363e-02[0m (rms/max) Trust = 1.414e-02 ([92m+[0m) Grad = [0m4.818e-04[0m/[0m7.722e-04[0m (rms/max) E (change) = -340.9656797101 ([0m-9.499e-05[0m) Quality = [0m0.998[0m
+Hessian Eigenvalues:  -6.196e-02 -3.686e-05 -1.358e-05  1.945e-06  1.140e-05  2.266e-05  7.805e-05
+ 2.170e-03  5.248e-03  1.348e-02  2.198e-02  2.330e-02    .....    6.795e-01  1.164e+00  1.386e+00
+Step    3 : Displace = [0m2.079e-02[0m/[0m4.776e-02[0m (rms/max) Trust = 2.000e-02 ([92m+[0m) Grad = [0m5.116e-04[0m/[0m9.040e-04[0m (rms/max) E (change) = -340.9657990404 ([0m-1.193e-04[0m) Quality = [0m0.992[0m
+Hessian Eigenvalues:  -6.196e-02 -3.649e-05 -1.222e-05  1.946e-06  1.199e-05  2.268e-05  9.432e-05
+ 3.000e-03  5.566e-03  1.376e-02  2.200e-02  2.334e-02    .....    6.795e-01  1.164e+00  1.388e+00
+Step    4 : Displace = [0m2.995e-02[0m/[0m6.829e-02[0m (rms/max) Trust = 2.828e-02 ([92m+[0m) Grad = [0m5.565e-04[0m/[0m9.564e-04[0m (rms/max) E (change) = -340.9659566805 ([0m-1.576e-04[0m) Quality = [0m0.967[0m
+Hessian Eigenvalues:  -6.196e-02 -3.649e-05 -7.649e-06  2.043e-06  1.300e-05  2.228e-05  9.769e-05
+ 3.485e-03  6.470e-03  1.426e-02  2.202e-02  2.341e-02    .....    6.795e-01  1.164e+00  1.389e+00
+Step    5 : Displace = [0m3.115e-02[0m/[0m6.958e-02[0m (rms/max) Trust = 3.000e-02 ([92m+[0m) Grad = [0m4.759e-04[0m/[0m7.463e-04[0m (rms/max) E (change) = -340.9661231356 ([0m-1.665e-04[0m) Quality = [0m0.949[0m
+Hessian Eigenvalues:  -6.195e-02 -3.608e-05 -5.036e-06  2.946e-06  1.763e-05  2.787e-05  9.677e-05
+ 3.566e-03  7.706e-03  1.489e-02  2.203e-02  2.349e-02    .....    6.795e-01  1.164e+00  1.389e+00
+Step    6 : Displace = [0m3.261e-02[0m/[0m8.099e-02[0m (rms/max) Trust = 3.000e-02 (=) Grad = [92m2.342e-04[0m/[92m4.202e-04[0m (rms/max) E (change) = -340.9662695357 ([0m-1.464e-04[0m) Quality = [0m0.950[0m
+Hessian Eigenvalues:  -6.195e-02 -4.137e-05 -1.300e-05  3.365e-06  1.628e-05  2.915e-05  9.881e-05
+ 3.801e-03  8.296e-03  1.512e-02  2.202e-02  2.353e-02    .....    6.795e-01  1.164e+00  1.390e+00
+Step    7 : Displace = [0m3.245e-02[0m/[0m7.285e-02[0m (rms/max) Trust = 3.000e-02 (=) Grad = [92m1.584e-04[0m/[92m2.487e-04[0m (rms/max) E (change) = -340.9663109731 ([0m-4.144e-05[0m) Quality = [0m0.751[0m
+Hessian Eigenvalues:  -6.194e-02 -1.255e-04 -2.158e-05  4.046e-06  1.026e-05  2.618e-05  1.025e-04
+ 4.017e-03  8.305e-03  1.512e-02  2.202e-02  2.353e-02    .....    6.795e-01  1.164e+00  1.390e+00
+Step    8 : Displace = [0m2.900e-02[0m/[0m7.270e-02[0m (rms/max) Trust = 3.000e-02 (=) Grad = [0m1.052e-03[0m/[0m1.845e-03[0m (rms/max) E (change) = -340.9662551839 ([91m+5.579e-05[0m) Quality = [91m-0.116[0m
+Poor-quality step dominated by net translation/rotation detected; will project out net forces and torques past this point.
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues:  -6.194e-02 -1.255e-04 -2.158e-05  4.046e-06  1.026e-05  2.618e-05  1.025e-04
+ 4.017e-03  8.305e-03  1.512e-02  2.202e-02  2.353e-02    .....    6.795e-01  1.164e+00  1.390e+00
+Step    9 : Displace = [0m1.540e-02[0m/[0m3.883e-02[0m (rms/max) Trust = 1.450e-02 ([1;91mx[0m) Grad = [0m5.504e-04[0m/[0m9.620e-04[0m (rms/max) E (change) = -340.9662980061 ([91m+1.297e-05[0m) Quality = [91m-0.081[0m
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues:  -6.194e-02 -1.255e-04 -2.158e-05  4.046e-06  1.026e-05  2.618e-05  1.025e-04
+ 4.017e-03  8.305e-03  1.512e-02  2.202e-02  2.353e-02    .....    6.795e-01  1.164e+00  1.390e+00
+Step   10 : Displace = [0m7.857e-03[0m/[0m1.927e-02[0m (rms/max) Trust = 7.249e-03 ([1;91mx[0m) Grad = [92m2.411e-04[0m/[92m4.112e-04[0m (rms/max) E (change) = -340.9663089446 ([91m+2.028e-06[0m) Quality = [91m-0.044[0m
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues:  -6.194e-02 -1.255e-04 -2.158e-05  4.046e-06  1.026e-05  2.618e-05  1.025e-04
+ 4.017e-03  8.305e-03  1.512e-02  2.202e-02  2.353e-02    .....    6.795e-01  1.164e+00  1.390e+00
+Step   11 : Displace = [0m3.695e-03[0m/[0m8.301e-03[0m (rms/max) Trust = 3.625e-03 ([1;91mx[0m) Grad = [92m3.871e-05[0m/[92m8.869e-05[0m (rms/max) E (change) = -340.9663114034 ([92m-4.303e-07[0m) Quality = [0m0.121[0m
+Hessian Eigenvalues:  -6.177e-02 -2.252e-04  6.891e-07  2.613e-06  2.590e-05  6.557e-05  3.506e-04
+ 4.100e-03  8.331e-03  1.514e-02  2.202e-02  2.352e-02    .....    6.796e-01  1.164e+00  1.393e+00
+Step   12 : Displace = [0m1.847e-03[0m/[0m4.191e-03[0m (rms/max) Trust = 1.812e-03 ([91m-[0m) Grad = [92m2.008e-05[0m/[92m4.468e-05[0m (rms/max) E (change) = -340.9663115052 ([92m-1.018e-07[0m) Quality = [0m0.260[0m
+Hessian Eigenvalues:  -6.514e-02 -5.382e-03 -1.197e-06  3.005e-06  2.598e-05  7.277e-05  5.695e-04
+ 3.452e-03  7.846e-03  1.510e-02  2.202e-02  2.351e-02    .....    6.810e-01  1.164e+00  1.464e+00
+Step   13 : Displace = [92m5.349e-04[0m/[92m1.242e-03[0m (rms/max) Trust = 9.062e-04 ([91m-[0m) Grad = [92m4.509e-06[0m/[92m8.871e-06[0m (rms/max) E (change) = -340.9663115673 ([92m-6.213e-08[0m) Quality = [0m0.982[0m
+Hessian Eigenvalues:  -6.514e-02 -5.382e-03 -1.197e-06  3.005e-06  2.598e-05  7.277e-05  5.695e-04
+ 3.452e-03  7.846e-03  1.510e-02  2.202e-02  2.351e-02    .....    6.810e-01  1.164e+00  1.464e+00
+Converged! =D
+*_* Warning - trust radius is lower than RMS displacement convergence criterion; please check gradient accuracy. *_*
+Backing up ts.tmp/hessian/coords.xyz -> ts.tmp/hessian/coords_1.xyz
+Backing up ts.tmp/hessian/hessian.txt -> ts.tmp/hessian/hessian_1.txt
+Calculating Cartesian Hessian using finite difference on Cartesian gradients (78 grads total)
+0 / 78 gradient calculations complete
+10 / 78 gradient calculations complete
+20 / 78 gradient calculations complete
+30 / 78 gradient calculations complete
+40 / 78 gradient calculations complete
+50 / 78 gradient calculations complete
+60 / 78 gradient calculations complete
+70 / 78 gradient calculations complete
+78 / 78 gradient calculations complete
+
+== Summary of harmonic free energy analysis ==
+Note: Rotational symmetry is set to 1 regardless of true symmetry
+1 Imaginary Frequencies (cm^-1): 693.513i
+Note: Free energy does not include contribution from imaginary mode(s)
+
+Free energy contributions calculated at @ 300.00 K:
+Zero-point vibrational energy:                                   57.2193 kcal/mol 
+H   (Trans + Rot + Vib = Tot):   1.4904 +   0.8942 +   3.1343 =   5.5190 kcal/mol 
+S   (Trans + Rot + Vib = Tot):  39.9237 +  28.0434 +  18.7052 =  86.6722 cal/mol/K
+TS  (Trans + Rot + Vib = Tot):  11.9771 +   8.4130 +   5.6116 =  26.0017 kcal/mol 
+
+Ground State Electronic Energy    : E0                        =  -340.96631157 au (   -213959.5908 kcal/mol)
+Free Energy Correction (Harmonic) : ZPVE + [H-TS]_T,R,V       =     0.05854354 au (        36.7366 kcal/mol)
+Gibbs Free Energy (Harmonic)      : E0 + ZPVE + [H-TS]_T,R,V  =  -340.90776803 au (   -213922.8542 kcal/mol)
+
+Vibrational analysis written to ts.vdata_last
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of run_optimizer: 2911.065 seconds

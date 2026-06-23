@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "versioneer"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tricflow"
+description = "TRICFlow — discover and refine reaction pathways from MD trajectories with geomeTRIC."
+readme = "README.md"
+license = {text = "BSD-3-Clause"}
+authors = [
+    {name = "Heejune Park", email = "heepark@ucdavis.edu"},
+]
+requires-python = ">=3.8"
+version = "0.2.0.dev0"
+
+dependencies = [
+    "numpy>=1.20",
+    "scipy>=1.7",
+    "networkx>=2.5",
+    "matplotlib>=3.3",
+    "geometric>=1.1",
+]
+
+[project.optional-dependencies]
+server = [
+    "qcportal>=0.50",
+    "qcfractal>=0.50",
+]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+full = [
+    "tricflow[server]",
+]
+
+[project.scripts]
+tricflow-optimize = "tricflow.tricflow:main_optimize"
+tricflow-neb = "tricflow.tricflow:main_neb"
+tricflow-irc = "tricflow.tricflow:main_irc"
+tricflow-tsoptimize = "tricflow.tricflow:main_tsoptimize"
+tricflow-energies = "tricflow.tricflow:main_get_energies"
+tricflow-assemble = "tricflow.tricflow:main_assemble"
+
+[project.urls]
+Homepage = "https://github.com/hjnpark/TRICFlow"
+Repository = "https://github.com/hjnpark/TRICFlow"
+Issues = "https://github.com/hjnpark/TRICFlow/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tricflow*"]
+
+[tool.setuptools.package-data]
+tricflow = ["*.ini"]
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "tricflow/_version.py"
+versionfile_build = "tricflow/_version.py"
+tag_prefix = ""
+parentdir_prefix = "tricflow-"
+
+[tool.ruff]
+line-length = 119
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]

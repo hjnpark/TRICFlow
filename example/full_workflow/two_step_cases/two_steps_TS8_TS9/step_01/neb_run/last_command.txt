@@ -1,0 +1,1 @@
+/home/heepark/miniconda3/envs/tricflow/bin/geometric-neb /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/neb_run/psi4.in /home/heepark/dev/TRICFlow/example/refine_elementary_step/single_step_cases/single_step_TS8/step_01/neb_run/interpolated.xyz --engine psi4 --images 11 --nebk 1.0 --prefix neb --nt 4 --maxg 0.1 --avgg 0.05

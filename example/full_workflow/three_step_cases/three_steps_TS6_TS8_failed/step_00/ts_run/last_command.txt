@@ -1,0 +1,1 @@
+/home/heepark/miniconda3/envs/tricflow/bin/python -m geometric.optimize /home/heepark/dev/TRICFlow/example/refine_elementary_step/three_steps_TS6_TS8/step_00/ts_run/psi4.in --engine psi4 --coordsys tric --coords /home/heepark/dev/TRICFlow/example/refine_elementary_step/three_steps_TS6_TS8/step_00/ts_run/coords.xyz --nt 4 --transition yes --hessian first+last --prefix ts

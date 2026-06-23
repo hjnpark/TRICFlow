@@ -1,0 +1,1 @@
+/home/heejune/miniconda3/envs/tricflow/bin/python3.12 -m geometric.optimize psi4_HCN.in --engine psi4 --coordsys tric --coords coords.xyz --transition yes --hessian first+last --prefix ts

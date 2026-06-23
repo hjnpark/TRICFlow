@@ -1,2 +1,8 @@
 include versioneer.py
-include qcarw/_version.py
+include tricflow/_version.py
+include README.md
+include LICENSE
+include environment.yml
+graft tests
+graft example
+recursive-include tricflow *.ini

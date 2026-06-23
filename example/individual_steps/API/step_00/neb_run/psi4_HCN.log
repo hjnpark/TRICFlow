@@ -1,0 +1,552 @@
+geometric-neb called with the following command line:
+/home/heejune/miniconda3/envs/tricflow/bin/geometric-neb /home/heejune/dev/TRICFlow/example/full_workflow_steps/step_00/neb_run/psi4_HCN.in /home/heejune/dev/TRICFlow/example/full_workflow_steps/step_00/neb_run/interpolated.xyz --engine psi4 --images 11 --nebk 1.0 --nt 4
+
+                                        [91m())))))))))))))))/[0m                     
+                                    [91m())))))))))))))))))))))))),[0m                
+                                [91m*)))))))))))))))))))))))))))))))))[0m             
+                        [94m#,[0m    [91m()))))))))/[0m                [91m.)))))))))),[0m          
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m.))))))))*[0m        
+                      [94m*%%%%%%,[0m  [91m))[0m              [93m..[0m              [91m,))))))).[0m      
+                        [94m*%%%%%%,[0m         [93m***************/.[0m        [91m.)))))))[0m     
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m/*********************.[0m       [91m)))))))[0m    
+              [94m.%%%%%%#[0m      [94m*%%%%%%,[0m  [93m*******/,[0m     [93m**********,[0m      [91m.))))))[0m   
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**[0m              [93m********[0m      [91m.))))))[0m  
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m,******[0m      [91m/)))))[0m  
+        [94m%%%%%%[0m      [94m.%%%%%%#[0m      [94m*%%%%%%,[0m    [92m,/////.[0m       [93m******[0m      [91m))))))[0m 
+      [94m#%[0m      [94m%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////,[0m      [93m*****/[0m     [91m,)))))[0m 
+    [94m#%%[0m  [94m%%%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+  [94m#%%%%.[0m      [94m%%%%%#[0m      [94m/%%%%%%*[0m      [94m#%%%%%%[0m   [92m/////)[0m     [93m******[0m      [91m))))),[0m
+    [94m#%%%%##%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+      [94m##[0m     [94m%%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////.[0m      [93m*****/[0m     [91m,)))))[0m 
+        [94m#%%%%#[0m      [94m/%%%%%%/[0m      [94m(%%%%%%[0m      [92m/)/)//[0m       [93m******[0m      [91m))))))[0m 
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m*******[0m      [91m))))))[0m  
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**.[0m             [93m/*******[0m      [91m.))))))[0m  
+              [94m*%%%%%%/[0m      [94m(%%%%%%[0m   [93m********/*..,*/*********[0m       [91m*))))))[0m   
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m*********************/[0m        [91m)))))))[0m    
+                        [94m*%%%%%%,[0m         [93m,**************/[0m         [91m,))))))/[0m     
+                      [94m(%%%%%%[0m   [91m()[0m                              [91m))))))))[0m       
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m,)))))))),[0m        
+                        [94m#,[0m    [91m())))))))))[0m                [91m,)))))))))).[0m          
+                                 [91m()))))))))))))))))))))))))))))))/[0m             
+                                    [91m())))))))))))))))))))))))).[0m                
+                                         [91m())))))))))))))),[0m                     
+
+-=# [1;94m geomeTRIC started. Version: 1.1.1+30.g72efecb [0m #=-
+Current date and time: 2026-06-18 14:45:32
+Psi4 engine selected. Expecting Psi4 input for gradient calculation.
+
+Nudged Elastic Band calculation will be performed.
+Input coordinates have 50 frames. The following will be used to initialize NEB images: 
+0, 5, 10, 15, 20, 24, 29, 34, 39, 44, 49
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Creating artificial bond to isolated atom: 3-1
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Creating artificial bond to isolated atom: 3-1
+Aligning images 
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Creating artificial bond to isolated atom: 3-1
+Optimizing the input chain 
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Creating artificial bond to isolated atom: 3-1
+Evening out spacings: Deleted image  4 and added a new image between  9 and 10 
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Evening out spacings: Deleted image  5 and added a new image between  9 and 10 
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-2
+Creating artificial bond to isolated atom: 3-1
+Evening out spacings: Deleted image  2 and added a new image between  7 and  8 
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+Spacing (Ang)     Old :      0.208   0.120   0.102   0.095   0.076   0.100   0.115   0.145   0.206   0.448 
+                  New :      0.208   0.221   0.170   0.213   0.145   0.206   0.112   0.112   0.112   0.112 
+
+-=# Chain optimization cycle 0 #=- 
+Spring Force: 1.00 kcal/mol/Ang^2 
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   ---->   (max)   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  21.084  59.609  81.616  69.476  47.852  21.705  26.154  29.054  13.095   0.000
+Spacing   (Ang)       :     0.208   0.221   0.170   0.213   0.145   0.206   0.112   0.112   0.112   0.112 
+Gradients (eV/Ang)    :  0.000   3.077   6.412   6.975   4.630   4.222   3.072  12.989  18.000  11.839   0.000
+Straightness          :  1.000   0.935   0.935   0.877   0.893   0.923   0.808   1.000   1.000   1.000   1.000
+
+-= Chain Properties =- 
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang) TrustRad(Ang)  Step Quality 
+@   [91m7.9131[0m        [91m18.0005[0m        1.6124   
+
+-=# Chain optimization cycle 1 #=- 
+Time since last ComputeChain: 0.007 s 
+Hessian Eigenvalues (Working) : 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   ---->   (max)   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  19.654  53.173  75.193  65.256  43.252  18.902  23.457  35.718  14.021   0.000
+Spacing   (Ang)       :     0.212   0.232   0.181   0.219   0.155   0.214   0.133   0.116   0.117   0.130 
+Gradients (eV/Ang)    :  0.000   1.259   2.824   3.020   2.539   2.995   2.436   9.212  13.639   9.604   0.000
+Straightness          :  1.000   0.938   0.912   0.861   0.910   0.912   0.968   0.963   0.856   0.969   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [91m5.2809[0m        [91m13.6389[0m        1.7084       -1.9068       0.1000      0.1000 (=)    1.09 (Good) 
+
+-=# Chain optimization cycle 2 #=- 
+Time since last ComputeChain: 0.184 s 
+Hessian Eigenvalues (Working) : 4.6199e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  3.1775e+00
+Hessian Eigenvalues (Plain)   : 4.5638e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  3.2339e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  20.589  51.847  74.184  61.351  35.807  13.563   7.618   6.325   2.609   0.000
+Spacing   (Ang)       :     0.213   0.244   0.187   0.225   0.172   0.225   0.156   0.099   0.074   0.154 
+Gradients (eV/Ang)    :  0.000   2.863   4.728   5.107   3.607   2.967   2.008   3.321   3.294   2.339   0.000
+Straightness          :  1.000   0.940   0.869   0.884   0.899   0.873   0.937   0.981   0.817   0.994   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [91m3.3595[0m        [91m5.1073[0m        1.7499       -6.7906       0.0642      0.1156 ([92m+[0m)    1.14 (Good) 
+
+-=# Chain optimization cycle 3 #=- 
+Time since last ComputeChain: 0.155 s 
+Hessian Eigenvalues (Working) : 2.6074e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  9.7576e-01  2.7355e+00
+Hessian Eigenvalues (Plain)   : 2.4035e-01  4.9624e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  9.9351e-01  2.7952e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  26.026  52.183  71.902  63.035  36.466  10.478  11.976  10.069   8.345   0.000
+Spacing   (Ang)       :     0.208   0.231   0.171   0.226   0.172   0.230   0.186   0.090   0.066   0.176 
+Gradients (eV/Ang)    :  0.000   7.791   6.856   7.720   6.871   7.867   4.187  10.695   9.149   4.551   0.000
+Straightness          :  1.000   0.906   0.848   0.914   0.866   0.829   0.853   0.987   0.598   0.410   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [91m7.2985[0m        [91m10.6947[0m        1.7561        1.5083       0.0765      0.0741 ([92m+[0m)   -0.25 (Poor) 
+
+-=# Chain optimization cycle 4 #=- 
+Time since last ComputeChain: 0.252 s 
+Hessian Eigenvalues (Working) : 2.9033e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.4057e-01  2.0895e+00  3.4699e+00
+Hessian Eigenvalues (Plain)   : 2.5764e-01  4.5300e-01  4.9920e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.7730e-01  2.3905e+00  3.3928e+00
+Creating artificial bond to isolated atom: 3-2
+Evening out spacings: Deleted image  8 and added a new image between  5 and  6 
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+Spacing (Ang)     Old :      0.214   0.235   0.176   0.227   0.181   0.243   0.198   0.092   0.062   0.147 
+                  New :      0.214   0.235   0.176   0.227   0.181   0.122   0.122   0.198   0.152   0.147 
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  19.865  46.997  65.637  57.495  30.185  18.290   7.939   2.353   0.807   0.000
+Spacing   (Ang)       :     0.214   0.235   0.176   0.227   0.181   0.122   0.122   0.198   0.152   0.147 
+Gradients (eV/Ang)    :  0.000   1.739   2.912   2.613   0.805   2.955   2.663   1.997   2.119   0.646   0.000
+Straightness          :  1.000   0.856   0.918   0.892   0.898   0.786   1.000   0.889   0.940   0.972   1.000
+Respaced images - skipping trust radius update 
+
+@ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang) TrustRad(Ang)  Step Quality 
+@   [0m2.0500        [0m2.9553        1.7750   
+
+-=# Chain optimization cycle 5 #=- 
+Time since last ComputeChain: 0.003 s 
+Hessian Eigenvalues (Working) : 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  21.262  48.844  67.444  57.290  34.271  17.912   8.710   5.415   0.580   0.000
+Spacing   (Ang)       :     0.207   0.249   0.186   0.232   0.188   0.129   0.129   0.200   0.150   0.146 
+Gradients (eV/Ang)    :  0.000   4.351   3.992   3.833   0.799   8.741   5.125   5.428   6.718   0.846   0.000
+Straightness          :  1.000   0.938   0.838   0.833   0.882   0.857   0.709   0.928   0.965   0.961   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [91m4.4259[0m        [91m8.7411[0m        1.8162        1.1075       0.0371      0.0371 ([91m-[0m)   -0.46 (Poor) 
+
+-=# Chain optimization cycle 6 #=- 
+Time since last ComputeChain: 0.205 s 
+Hessian Eigenvalues (Working) : 3.5455e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  3.0863e+00
+Hessian Eigenvalues (Plain)   : 3.5536e-01  5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  3.0462e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  19.403  47.207  65.921  57.206  27.392  14.632   5.834   1.440   0.477   0.000
+Spacing   (Ang)       :     0.208   0.247   0.185   0.232   0.190   0.130   0.124   0.201   0.152   0.146 
+Gradients (eV/Ang)    :  0.000   1.670   3.063   2.854   0.618   2.019   3.094   1.646   1.545   0.499   0.000
+Straightness          :  1.000   0.927   0.870   0.834   0.911   0.876   0.903   0.929   0.957   0.977   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m1.8899        [0m3.0938        1.8119       -2.0198       0.0185      0.0185 ([91m-[0m)    1.15 (Good) 
+
+-=# Chain optimization cycle 7 #=- 
+Time since last ComputeChain: 0.206 s 
+Hessian Eigenvalues (Working) : 3.7011e-01  4.4507e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.0000e-01  3.6871e+00
+Hessian Eigenvalues (Plain)   : 3.6366e-01  4.3463e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  5.2311e-01  3.6714e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  19.110  45.828  64.920  57.087  27.127  13.872   4.960   1.138   0.349   0.000
+Spacing   (Ang)       :     0.209   0.237   0.179   0.230   0.187   0.136   0.120   0.206   0.153   0.146 
+Gradients (eV/Ang)    :  0.000   0.943   2.128   2.157   0.411   2.122   4.341   1.315   1.486   0.400   0.000
+Straightness          :  1.000   0.882   0.933   0.846   0.890   0.853   0.965   0.902   0.960   0.977   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m1.7004        [0m4.3413        1.8022       -0.4662       0.0267      0.0262 ([92m+[0m)    0.36 (Okay) 
+
+-=# Chain optimization cycle 8 #=- 
+Time since last ComputeChain: 0.751 s 
+Hessian Eigenvalues (Working) : 2.9039e-01  4.5044e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0000e-01  2.4784e+00  3.1823e+00
+Hessian Eigenvalues (Plain)   : 2.8493e-01  4.3993e-01  4.9119e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  5.0891e-01  2.4573e+00  3.0755e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  18.879  45.340  64.383  56.985  26.188  10.785   3.847   0.741   0.214   0.000
+Spacing   (Ang)       :     0.207   0.238   0.180   0.232   0.188   0.147   0.125   0.213   0.156   0.145 
+Gradients (eV/Ang)    :  0.000   0.366   1.678   1.334   0.406   1.472   2.556   1.084   1.166   0.302   0.000
+Straightness          :  1.000   0.894   0.930   0.832   0.920   0.865   0.904   0.932   0.952   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m1.1514        [0m2.5558        1.8304       -0.6379       0.0277      0.0262 (=)    0.79 (Good) 
+
+-=# Chain optimization cycle 9 #=- 
+Time since last ComputeChain: 0.442 s 
+Hessian Eigenvalues (Working) : 1.9209e-01  4.7832e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0000e-01  6.9900e-01  2.9168e+00  3.9031e+00
+Hessian Eigenvalues (Plain)   : 1.8197e-01  4.6234e-01  4.8399e-01  4.9456e-01  5.0000e-01... 5.0000e-01  5.0302e-01  7.3041e-01  2.7958e+00  3.9265e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  18.576  46.681  65.737  56.885  24.857   7.546   2.530   0.431   0.076   0.000
+Spacing   (Ang)       :     0.204   0.249   0.187   0.236   0.195   0.161   0.127   0.222   0.159   0.145 
+Gradients (eV/Ang)    :  0.000   0.459   3.264   3.040   0.551   2.294   2.271   1.958   1.347   0.268   0.000
+Straightness          :  1.000   0.929   0.883   0.812   0.953   0.832   0.895   0.907   0.959   0.988   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m1.7171        [0m3.2644        1.8853       -0.3646       0.0358      0.0371 ([92m+[0m)    0.36 (Okay) 
+
+-=# Chain optimization cycle 10 #=- 
+Time since last ComputeChain: 0.459 s 
+Hessian Eigenvalues (Working) : 1.7187e-01  4.7868e-01  5.0000e-01  5.0000e-01  5.0000e-01... 5.0000e-01  5.0491e-01  2.1361e+00  3.2555e+00  3.4037e+00
+Hessian Eigenvalues (Plain)   : 1.6448e-01  4.6057e-01  4.7790e-01  4.8792e-01  4.9842e-01... 5.0294e-01  5.0760e-01  2.1081e+00  3.2359e+00  3.4740e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  18.556  44.572  63.931  56.759  21.894   4.271   0.792   0.125   0.006   0.000
+Spacing   (Ang)       :     0.203   0.248   0.185   0.238   0.206   0.175   0.136   0.225   0.161   0.146 
+Gradients (eV/Ang)    :  0.000   1.874   1.741   1.048   0.272   0.985   1.038   0.605   0.826   0.056   0.000
+Straightness          :  1.000   0.899   0.905   0.822   0.946   0.842   0.824   0.924   0.966   0.989   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.9382        [0m1.8744        1.9226       -1.1269       0.0366      0.0371 (=)    1.30 (Good) 
+
+-=# Chain optimization cycle 11 #=- 
+Time since last ComputeChain: 0.100 s 
+Hessian Eigenvalues (Working) : 9.2889e-02  4.7603e-01  4.9428e-01  5.0000e-01  5.0000e-01... 5.0000e-01  6.6258e-01  2.0823e+00  3.0935e+00  3.5621e+00
+Hessian Eigenvalues (Plain)   : 8.2617e-02  4.3786e-01  4.6458e-01  4.8305e-01  4.9244e-01... 5.0445e-01  7.0739e-01  2.1782e+00  2.8959e+00  3.5698e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  24.334  46.534  64.592  56.752  18.827   1.471   0.796   0.139   0.017   0.000
+Spacing   (Ang)       :     0.193   0.241   0.183   0.240   0.219   0.192   0.149   0.233   0.163   0.148 
+Gradients (eV/Ang)    :  0.000   8.168   4.998   2.800   0.704   0.356   0.611   2.493   1.051   0.112   0.000
+Straightness          :  1.000   0.922   0.911   0.829   0.944   0.819   0.767   0.897   0.979   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m2.3660        [91m8.1675[0m        1.9613        0.2343       0.0485      0.0524 ([92m+[0m)   -0.19 (Poor) 
+
+-=# Chain optimization cycle 12 #=- 
+Time since last ComputeChain: 0.210 s 
+Hessian Eigenvalues (Working) : 1.0676e-01  4.4446e-01  4.9421e-01  5.0000e-01  5.0000e-01... 5.0725e-01  2.0466e+00  2.8352e+00  3.0453e+00  3.5443e+00
+Hessian Eigenvalues (Plain)   : 9.0067e-02  4.2782e-01  4.6725e-01  4.8260e-01  4.8708e-01... 5.2366e-01  2.1367e+00  2.8725e+00  2.9275e+00  3.5202e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  17.343  43.372  63.525  56.685  18.775   1.289   0.038   0.019   0.016   0.000
+Spacing   (Ang)       :     0.197   0.247   0.185   0.241   0.220   0.193   0.151   0.232   0.163   0.148 
+Gradients (eV/Ang)    :  0.000   0.625   1.115   0.594   0.288   0.237   0.458   0.294   0.117   0.085   0.000
+Straightness          :  1.000   0.897   0.911   0.837   0.952   0.821   0.740   0.920   0.976   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.4236        [0m1.1150        1.9755       -1.1266       0.0242      0.0242 ([91m-[0m)    1.64 (Good) 
+
+-=# Chain optimization cycle 13 #=- 
+Time since last ComputeChain: 0.124 s 
+Hessian Eigenvalues (Working) : 1.0658e-01  4.4335e-01  4.9390e-01  4.9810e-01  5.0000e-01... 5.0860e-01  1.9788e+00  3.0271e+00  3.2057e+00  3.5456e+00
+Hessian Eigenvalues (Plain)   : 8.9815e-02  4.2705e-01  4.6727e-01  4.8267e-01  4.8695e-01... 5.2249e-01  2.0608e+00  2.8722e+00  3.2154e+00  3.5309e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  16.928  42.926  63.469  56.681  17.705   0.525   0.064   0.041   0.025   0.000
+Spacing   (Ang)       :     0.196   0.251   0.185   0.242   0.227   0.203   0.159   0.233   0.164   0.148 
+Gradients (eV/Ang)    :  0.000   0.390   0.485   0.804   0.628   0.184   0.283   0.210   0.201   0.104   0.000
+Straightness          :  1.000   0.911   0.885   0.865   0.950   0.808   0.680   0.932   0.977   0.984   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.3654        [0m0.8035        2.0070       -0.2436       0.0233      0.0343 ([92m+[0m)    1.05 (Good) 
+
+-=# Chain optimization cycle 14 #=- 
+Time since last ComputeChain: 0.207 s 
+Hessian Eigenvalues (Working) : 5.3794e-02  3.3725e-01  4.7113e-01  4.9524e-01  5.0000e-01... 1.1121e+00  2.0499e+00  3.0482e+00  3.3610e+00  3.5457e+00
+Hessian Eigenvalues (Plain)   : 4.8452e-02  3.1221e-01  4.5196e-01  4.6886e-01  4.8372e-01... 1.1041e+00  2.1202e+00  2.8639e+00  3.3418e+00  3.5762e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  16.260  42.257  64.003  56.878  15.678   0.045   0.563   0.147   0.036   0.000
+Spacing   (Ang)       :     0.199   0.254   0.189   0.247   0.237   0.222   0.179   0.235   0.166   0.149 
+Gradients (eV/Ang)    :  0.000   1.311   0.272   2.180   1.858   0.549   0.421   1.014   0.774   0.125   0.000
+Straightness          :  1.000   0.865   0.915   0.834   0.988   0.762   0.531   0.960   0.971   0.984   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.9449        [0m2.1800        2.0770       -0.2229       0.0480      0.0485 ([92m+[0m)    0.53 (Good) 
+
+-=# Chain optimization cycle 15 #=- 
+Time since last ComputeChain: 0.210 s 
+Hessian Eigenvalues (Working) : 6.3793e-02  2.9456e-01  4.7153e-01  4.9524e-01  5.0000e-01... 1.9232e+00  2.4398e+00  3.0496e+00  3.5045e+00  3.5605e+00
+Hessian Eigenvalues (Plain)   : 5.5994e-02  2.6676e-01  4.5564e-01  4.6986e-01  4.7931e-01... 2.0064e+00  2.3347e+00  2.8613e+00  3.4752e+00  3.6285e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  16.165  42.357  63.220  56.385  16.302   0.018   0.198   0.087   0.014   0.000
+Spacing   (Ang)       :     0.200   0.254   0.186   0.247   0.233   0.215   0.175   0.233   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.770   0.071   0.701   0.567   0.183   0.125   0.407   0.739   0.082   0.000
+Straightness          :  1.000   0.854   0.908   0.868   0.966   0.786   0.546   0.959   0.975   0.983   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.4049        [0m0.7703        2.0576       -0.1031       0.0128      0.0686 ([92m+[0m)    1.14 (Good) 
+
+-=# Chain optimization cycle 16 #=- 
+Time since last ComputeChain: 0.385 s 
+Hessian Eigenvalues (Working) : 5.9430e-02  2.7626e-01  4.3110e-01  4.7564e-01  4.9527e-01... 1.8643e+00  2.7795e+00  3.0419e+00  3.2574e+00  3.5459e+00
+Hessian Eigenvalues (Plain)   : 5.3799e-02  2.5309e-01  4.1169e-01  4.5955e-01  4.7111e-01... 1.9150e+00  2.6914e+00  2.8630e+00  3.2785e+00  3.5492e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   ---->   (max)   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  16.469  42.942  64.259  56.285  17.146   0.181   0.309   0.911   0.002   0.000
+Spacing   (Ang)       :     0.198   0.256   0.184   0.247   0.226   0.208   0.171   0.231   0.165   0.148 
+Gradients (eV/Ang)    :  0.000   1.802   1.739   2.792   0.337   0.616   0.500   1.746   2.834   0.123   0.000
+Straightness          :  1.000   0.877   0.847   0.895   0.954   0.794   0.528   0.970   0.958   0.987   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m1.3877        [0m2.8336        2.0335        0.3403       0.0179      0.0970 ([92m+[0m)   -4.85 (Reject) 
+Reducing trust radius to 9.0e-03 and rejecting step 
+
+-=# Chain optimization cycle 17 #=- 
+Time since last ComputeChain: 0.012 s 
+Hessian Eigenvalues (Working) : 5.9430e-02  2.7626e-01  4.3110e-01  4.7564e-01  4.9527e-01... 1.8643e+00  2.7795e+00  3.0419e+00  3.2574e+00  3.5459e+00
+Hessian Eigenvalues (Plain)   : 5.3799e-02  2.5309e-01  4.1169e-01  4.5955e-01  4.7111e-01... 1.9150e+00  2.6914e+00  2.8630e+00  3.2785e+00  3.5492e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (max)   <----   <----   (min)   ---->   (max)   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  16.070  42.465  63.341  56.284  16.411   0.028   0.175   0.256   0.008   0.000
+Spacing   (Ang)       :     0.199   0.255   0.185   0.247   0.232   0.214   0.175   0.233   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.810   0.941   1.218   0.107   0.330   0.281   0.903   1.482   0.082   0.000
+Straightness          :  1.000   0.865   0.876   0.887   0.961   0.785   0.521   0.968   0.968   0.986   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.6838        [0m1.4823        2.0534        0.0261       0.0089      0.0090 ([91m-[0m)   -0.30 (Poor) 
+
+-=# Chain optimization cycle 18 #=- 
+Time since last ComputeChain: 0.619 s 
+Hessian Eigenvalues (Working) : 6.1431e-02  2.6597e-01  4.1064e-01  4.8756e-01  4.9644e-01... 2.5586e+00  2.9151e+00  3.0030e+00  3.2303e+00  3.5457e+00
+Hessian Eigenvalues (Plain)   : 5.5680e-02  2.4253e-01  3.9511e-01  4.6765e-01  4.7609e-01... 2.3682e+00  2.8436e+00  2.9873e+00  3.2428e+00  3.5486e+00
+--== Images set to Climbing Mode: 3 ==-- 
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.951  42.337  63.148  56.294  16.402   0.018   0.075   0.015   0.006   0.000
+Spacing   (Ang)       :     0.199   0.254   0.186   0.247   0.231   0.214   0.176   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.301   0.433   1.329   0.256   0.071   0.069   0.182   0.122   0.049   0.000
+Straightness          :  1.000   0.857   0.895   0.877   0.967   0.783   0.517   0.965   0.974   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.3125        [0m1.3288        2.0542       -0.0719       0.0044      0.0045 ([91m-[0m)    1.09 (Good) 
+
+-=# Chain optimization cycle 19 #=- 
+Time since last ComputeChain: 0.196 s 
+Hessian Eigenvalues (Working) : 6.1408e-02  2.4065e-01  3.3978e-01  4.4300e-01  4.8884e-01... 2.5871e+00  2.9993e+00  3.1948e+00  3.5449e+00  4.3691e+00
+Hessian Eigenvalues (Plain)   : 5.5678e-02  2.3539e-01  3.9624e-01  4.6126e-01  4.7016e-01... 2.3223e+00  2.8514e+00  3.1527e+00  3.3371e+00  3.5492e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.922  42.301  63.624  56.284  16.402   0.017   0.067   0.029   0.005   0.000
+Spacing   (Ang)       :     0.200   0.253   0.192   0.241   0.232   0.214   0.176   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.333   0.131   1.151   0.094   0.113   0.092   0.283   0.425   0.047   0.000
+Straightness          :  1.000   0.847   0.907   0.873   0.968   0.786   0.511   0.965   0.976   0.984   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.2964        [0m1.1508        2.0547        0.0369       0.0069      0.0063 ([92m+[0m)    0.92 (Good) 
+
+-=# Chain optimization cycle 20 #=- 
+Time since last ComputeChain: 0.114 s 
+Hessian Eigenvalues (Working) : 6.1484e-02  2.4254e-01  3.5180e-01  4.5087e-01  4.9054e-01... 2.5920e+00  3.0025e+00  3.1930e+00  3.5445e+00  5.2105e+00
+Hessian Eigenvalues (Plain)   : 5.5612e-02  1.5230e-01  2.4785e-01  3.9685e-01  4.6836e-01... 2.4225e+00  2.8573e+00  3.2350e+00  3.5469e+00  4.0579e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.856  42.275  64.313  56.274  16.402   0.017   0.065   0.057   0.003   0.000
+Spacing   (Ang)       :     0.201   0.253   0.201   0.233   0.231   0.214   0.177   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.371   0.166   1.074   0.186   0.137   0.162   0.512   0.698   0.048   0.000
+Straightness          :  1.000   0.838   0.909   0.871   0.972   0.787   0.496   0.966   0.977   0.984   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.3727        [0m1.0741        2.0555        0.0555       0.0090      0.0089 ([92m+[0m)    0.91 (Good) 
+
+-=# Chain optimization cycle 21 #=- 
+Time since last ComputeChain: 0.285 s 
+Hessian Eigenvalues (Working) : 5.7460e-02  8.3103e-02  2.9013e-01  4.4059e-01  4.9018e-01... 2.6494e+00  3.0157e+00  3.1902e+00  3.5443e+00  4.7716e+00
+Hessian Eigenvalues (Plain)   : 1.0971e-03  5.5858e-02  2.4887e-01  3.9326e-01  4.6836e-01... 2.6779e+00  2.8639e+00  3.2048e+00  3.5468e+00  1.7811e+01
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.769  42.262  65.254  56.263  16.392   0.013   0.021   0.005   0.001   0.000
+Spacing   (Ang)       :     0.202   0.253   0.214   0.220   0.232   0.214   0.177   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.253   0.391   1.006   0.163   0.087   0.058   0.098   0.130   0.026   0.000
+Straightness          :  1.000   0.825   0.913   0.869   0.971   0.794   0.475   0.970   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.2456        [0m1.0056        2.0570        0.0653       0.0134      0.0126 ([92m+[0m)    0.79 (Good) 
+
+-=# Chain optimization cycle 22 #=- 
+Time since last ComputeChain: 0.147 s 
+Hessian Eigenvalues (Working) : 6.1179e-02  1.1081e-01  2.7892e-01  4.2971e-01  4.9064e-01... 2.6631e+00  3.0179e+00  3.0748e+00  3.3820e+00  3.5472e+00
+Hessian Eigenvalues (Plain)   : 1.5275e-04  5.5867e-02  2.3591e-01  3.8162e-01  4.6827e-01... 2.6735e+00  2.8748e+00  3.2114e+00  3.5455e+00  6.3997e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   <----   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.678  42.205  66.293  56.263  16.393   0.011   0.008   0.001   0.001   0.000
+Spacing   (Ang)       :     0.205   0.253   0.232   0.202   0.232   0.213   0.178   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.202   0.088   0.748   0.108   0.061   0.038   0.080   0.028   0.026   0.000
+Straightness          :  1.000   0.808   0.908   0.871   0.974   0.800   0.453   0.972   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.1532        [0m0.7476        2.0585        0.0793       0.0184      0.0179 ([92m+[0m)    0.88 (Good) 
+
+-=# Chain optimization cycle 23 #=- 
+Time since last ComputeChain: 0.165 s 
+Hessian Eigenvalues (Working) : 6.0493e-02  8.2365e-02  2.7452e-01  4.2541e-01  4.9064e-01... 2.5653e+00  3.0278e+00  3.0706e+00  3.3785e+00  3.5545e+00
+Hessian Eigenvalues (Plain)   :-1.3200e+00  1.2486e-04  5.5855e-02  2.1606e-01  3.6627e-01... 2.2854e+00  2.8529e+00  3.2072e+00  3.2789e+00  3.5442e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   <----   <----   (min)   (max) [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.561  42.175  67.346  56.250  16.377   0.008   0.005   0.002   0.002   0.000
+Spacing   (Ang)       :     0.208   0.252   0.257   0.177   0.232   0.212   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.169   0.056   0.458   0.084   0.228   0.049   0.190   0.131   0.148   0.000
+Straightness          :  1.000   0.778   0.910   0.866   0.977   0.810   0.424   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.1683        [0m0.4585        2.0623        0.0799       0.0257      0.0253 ([92m+[0m)    0.86 (Good) 
+
+-=# Chain optimization cycle 24 #=- 
+Time since last ComputeChain: 0.163 s 
+Hessian Eigenvalues (Working) : 6.0062e-02  9.1283e-02  2.7357e-01  4.2385e-01  4.9064e-01... 2.5439e+00  3.0281e+00  3.0707e+00  3.3793e+00  3.5539e+00
+Hessian Eigenvalues (Plain)   :-2.2108e-01  7.8614e-04  5.6158e-02  2.1362e-01  3.2292e-01... 2.2827e+00  2.8537e+00  3.2095e+00  3.2778e+00  3.5452e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   (min)   (max) [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.366  42.097  67.870  56.250  16.660   0.007   0.284   0.153   0.190   0.000
+Spacing   (Ang)       :     0.215   0.252   0.292   0.143   0.233   0.209   0.182   0.233   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.268   0.081   0.523   0.410   2.051   0.252   1.613   1.189   1.325   0.000
+Straightness          :  1.000   0.714   0.917   0.865   0.972   0.843   0.384   0.970   0.976   0.982   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.8569        [0m2.0513        2.0727        0.1065       0.0359      0.0357 ([92m+[0m)   -2.57 (Reject) 
+Reducing trust radius to 1.8e-02 and rejecting step 
+
+-=# Chain optimization cycle 25 #=- 
+Time since last ComputeChain: 0.012 s 
+Hessian Eigenvalues (Working) : 6.0062e-02  9.1283e-02  2.7357e-01  4.2385e-01  4.9064e-01... 2.5439e+00  3.0281e+00  3.0707e+00  3.3793e+00  3.5539e+00
+Hessian Eigenvalues (Plain)   :-2.2108e-01  7.8614e-04  5.6158e-02  2.1362e-01  3.2292e-01... 2.2827e+00  2.8537e+00  3.2095e+00  3.2778e+00  3.5452e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   (min)   (max) [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.479  42.148  67.740  56.246  16.474   0.007   0.091   0.050   0.061   0.000
+Spacing   (Ang)       :     0.211   0.252   0.274   0.160   0.232   0.210   0.180   0.233   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.187   0.064   0.301   0.235   1.142   0.146   0.921   0.687   0.755   0.000
+Straightness          :  1.000   0.748   0.913   0.870   0.973   0.829   0.408   0.971   0.976   0.983   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.4930        [0m1.1416        2.0657        0.0524       0.0177      0.0179 ([91m-[0m)   -3.86 (Reject) 
+Reducing trust radius to 8.9e-03 and rejecting step 
+
+-=# Chain optimization cycle 26 #=- 
+Time since last ComputeChain: 0.005 s 
+Hessian Eigenvalues (Working) : 6.0062e-02  9.1283e-02  2.7357e-01  4.2385e-01  4.9064e-01... 2.5439e+00  3.0281e+00  3.0707e+00  3.3793e+00  3.5539e+00
+Hessian Eigenvalues (Plain)   :-2.2108e-01  7.8614e-04  5.6158e-02  2.1362e-01  3.2292e-01... 2.2827e+00  2.8537e+00  3.2095e+00  3.2778e+00  3.5452e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <----   (min)   (max)   (min)   (max) [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.525  42.165  67.568  56.246  16.402   0.007   0.026   0.015   0.017   0.000
+Spacing   (Ang)       :     0.210   0.252   0.265   0.169   0.232   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.162   0.056   0.346   0.124   0.601   0.079   0.491   0.370   0.402   0.000
+Straightness          :  1.000   0.764   0.911   0.870   0.974   0.821   0.417   0.972   0.976   0.984   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.2923        [0m0.6005        2.0634        0.0225       0.0085      0.0089 ([91m-[0m)   -0.62 (Poor) 
+
+-=# Chain optimization cycle 27 #=- 
+Time since last ComputeChain: 0.177 s 
+Hessian Eigenvalues (Working) : 6.0855e-02  1.0462e-01  2.7442e-01  4.2303e-01  4.9083e-01... 3.0239e+00  3.0677e+00  3.2774e+00  3.3828e+00  3.5561e+00
+Hessian Eigenvalues (Plain)   : 3.8148e-04  5.6326e-02  9.2144e-02  2.2134e-01  3.6558e-01... 2.8528e+00  3.2116e+00  3.2763e+00  3.5451e+00  4.3683e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <----   <---- [94m  <----[0m   <----   <----   <---- [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.505  42.160  67.651  56.238  16.361   0.006   0.001   0.000   0.000   0.000
+Spacing   (Ang)       :     0.210   0.252   0.269   0.165   0.232   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.141   0.058   0.276   0.048   0.078   0.022   0.069   0.061   0.052   0.000
+Straightness          :  1.000   0.756   0.911   0.873   0.976   0.820   0.412   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.0895        [0m0.2760        2.0638       -0.0043       0.0044      0.0043 ([91m-[0m)    1.39 (Good) 
+
+-=# Chain optimization cycle 28 #=- 
+Time since last ComputeChain: 0.179 s 
+Hessian Eigenvalues (Working) : 6.0979e-02  1.1336e-01  2.7466e-01  4.2284e-01  4.8907e-01... 3.0277e+00  3.0611e+00  3.3195e+00  3.3999e+00  3.5520e+00
+Hessian Eigenvalues (Plain)   : 2.3898e-04  5.6366e-02  7.9447e-02  2.2087e-01  3.6469e-01... 2.8520e+00  3.2151e+00  3.2750e+00  3.5455e+00  3.9280e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <---- [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  (min)[0m [94m  (max)[0m [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.470  42.151  67.738  56.228  16.349   0.006   0.000   0.000   0.000   0.000
+Spacing   (Ang)       :     0.212   0.252   0.274   0.159   0.232   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.123   0.058   0.191   0.036   0.016   0.022   0.005   0.007   0.022   0.000
+Straightness          :  1.000   0.742   0.912   0.876   0.978   0.822   0.409   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.0534        [0m0.1911        2.0645        0.0021       0.0062      0.0060 ([92m+[0m)    0.87 (Good) 
+
+-=# Chain optimization cycle 29 #=- 
+Time since last ComputeChain: 0.130 s 
+Hessian Eigenvalues (Working) : 6.1302e-02  1.1946e-01  2.7684e-01  4.2243e-01  4.5226e-01... 3.0281e+00  3.0689e+00  3.3100e+00  3.3900e+00  3.5533e+00
+Hessian Eigenvalues (Plain)   :-1.3405e-01  1.0732e-03  5.6078e-02  2.0655e-01  2.5194e-01... 2.8436e+00  3.1946e+00  3.2672e+00  3.3152e+00  3.5377e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^)   <---- [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  (min)[0m [94m  (max)[0m [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.403  42.124  67.795  56.200  16.349   0.006   0.000   0.000   0.000   0.000
+Spacing   (Ang)       :     0.215   0.252   0.282   0.150   0.231   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.095   0.056   0.058   0.030   0.009   0.022   0.005   0.007   0.022   0.000
+Straightness          :  1.000   0.714   0.916   0.884   0.979   0.825   0.409   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.0337        [0m0.0953        2.0664       -0.0056       0.0089      0.0085 ([92m+[0m)    0.74 (Good) 
+
+-=# Chain optimization cycle 30 #=- 
+Time since last ComputeChain: 0.135 s 
+Hessian Eigenvalues (Working) : 6.1359e-02  1.1719e-01  2.8186e-01  4.2038e-01  4.5248e-01... 3.0271e+00  3.0669e+00  3.3057e+00  3.3899e+00  3.5535e+00
+Hessian Eigenvalues (Plain)   :-1.1465e-01  1.0492e-03  5.6498e-02  2.2108e-01  2.7862e-01... 2.8460e+00  3.1954e+00  3.2674e+00  3.3318e+00  3.5374e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^) [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  (min)[0m [94m  (max)[0m [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.278  42.061  67.790  56.148  16.349   0.006   0.000   0.000   0.000   0.000
+Spacing   (Ang)       :     0.220   0.252   0.288   0.144   0.231   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.066   0.058   0.064   0.011   0.015   0.022   0.005   0.007   0.022   0.000
+Straightness          :  1.000   0.670   0.921   0.891   0.980   0.827   0.409   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.0300        [0m0.0663        2.0707       -0.0218       0.0086      0.0121 ([92m+[0m)    0.69 (Good) 
+
+-=# Chain optimization cycle 31 #=- 
+Time since last ComputeChain: 0.229 s 
+Hessian Eigenvalues (Working) : 5.9984e-02  8.8445e-02  2.9000e-01  4.2278e-01  4.3536e-01... 3.0273e+00  3.0671e+00  3.2804e+00  3.3892e+00  3.5504e+00
+Hessian Eigenvalues (Plain)   :-6.9499e-02  1.0642e-03  5.7930e-02  2.1746e-01  2.6115e-01... 3.1007e+00  3.2124e+00  3.2859e+00  3.5370e+00  6.4292e+01
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m   ---->   ---->   (^_^) [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  (min)[0m [94m  (max)[0m [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.198  42.009  67.791  56.148  16.349   0.006   0.000   0.000   0.000   0.000
+Spacing   (Ang)       :     0.222   0.253   0.288   0.144   0.231   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.036   0.051   0.072   0.015   0.015   0.022   0.005   0.007   0.022   0.000
+Straightness          :  1.000   0.646   0.924   0.892   0.979   0.827   0.409   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [0m0.0272        [0m0.0722        2.0735       -0.0118       0.0047      0.0171 ([92m+[0m)    0.18 (Okay) 
+
+-=# Chain optimization cycle 32 #=- 
+Time since last ComputeChain: 0.407 s 
+Hessian Eigenvalues (Working) : 4.1470e-02  7.2416e-02  2.2602e-01  3.2187e-01  4.2322e-01... 3.0260e+00  3.0659e+00  3.2570e+00  3.3893e+00  3.5501e+00
+Hessian Eigenvalues (Plain)   :-1.9473e-01  1.1464e-04  4.0664e-02  6.4369e-02  2.2592e-01... 2.8708e+00  3.2094e+00  3.2712e+00  3.2920e+00  3.5371e+00
+Image Number          :    0       1       2       3       4       5       6       7       8       9      10  
+                       [94m  (min)[0m [94m  ---->[0m   ---->   (^_^) [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  <----[0m [94m  (min)[0m [94m  (max)[0m [94m  (min)[0m
+Energies  (kcal/mol)  :  9.017  15.006  41.882  67.798  56.148  16.349   0.006   0.000   0.000   0.000   0.000
+Spacing   (Ang)       :     0.227   0.254   0.286   0.147   0.231   0.211   0.179   0.232   0.165   0.149 
+Gradients (eV/Ang)    :  0.000   0.017   0.036   0.041   0.020   0.015   0.022   0.005   0.007   0.022   0.000
+Straightness          :  1.000   0.590   0.931   0.890   0.979   0.827   0.409   0.973   0.975   0.985   1.000
+
+ GAvg(eV/Ang)  GMax(eV/Ang)   Length(Ang)  DeltaE(kcal)   RMSD(Ang)  TrustRad(Ang)  Step Quality 
+@   [92m0.0206[0m        [92m0.0407[0m        2.0814       -0.0279       0.0102      0.0171 (=)    0.83 (Good) 
+--== Optimization Converged. ==-- 
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of OptimizeChain: 599.942 seconds

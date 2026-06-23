@@ -1,0 +1,1 @@
+/home/heejune/miniconda3/envs/tricflow/bin/geometric-neb psi4_HCN.in interpolated.xyz --engine psi4 --images 11 --nebk 1.0 --prefix neb

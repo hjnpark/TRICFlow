@@ -1,0 +1,635 @@
+geometric-optimize called with the following command line:
+/home/heejune/dev/geomeTRIC/geometric/optimize.py /home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/irc_run/psi4.in --engine psi4 --coordsys tric --coords /home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/irc_run/ts_optim.xyz --nt 4 --irc yes --irc_direction both --hessian file:/home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/ts_run/ts.tmp/hessian/hessian.txt --prefix irc
+
+                                        [91m())))))))))))))))/[0m                     
+                                    [91m())))))))))))))))))))))))),[0m                
+                                [91m*)))))))))))))))))))))))))))))))))[0m             
+                        [94m#,[0m    [91m()))))))))/[0m                [91m.)))))))))),[0m          
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m.))))))))*[0m        
+                      [94m*%%%%%%,[0m  [91m))[0m              [93m..[0m              [91m,))))))).[0m      
+                        [94m*%%%%%%,[0m         [93m***************/.[0m        [91m.)))))))[0m     
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m/*********************.[0m       [91m)))))))[0m    
+              [94m.%%%%%%#[0m      [94m*%%%%%%,[0m  [93m*******/,[0m     [93m**********,[0m      [91m.))))))[0m   
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**[0m              [93m********[0m      [91m.))))))[0m  
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m,******[0m      [91m/)))))[0m  
+        [94m%%%%%%[0m      [94m.%%%%%%#[0m      [94m*%%%%%%,[0m    [92m,/////.[0m       [93m******[0m      [91m))))))[0m 
+      [94m#%[0m      [94m%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////,[0m      [93m*****/[0m     [91m,)))))[0m 
+    [94m#%%[0m  [94m%%%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+  [94m#%%%%.[0m      [94m%%%%%#[0m      [94m/%%%%%%*[0m      [94m#%%%%%%[0m   [92m/////)[0m     [93m******[0m      [91m))))),[0m
+    [94m#%%%%##%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+      [94m##[0m     [94m%%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////.[0m      [93m*****/[0m     [91m,)))))[0m 
+        [94m#%%%%#[0m      [94m/%%%%%%/[0m      [94m(%%%%%%[0m      [92m/)/)//[0m       [93m******[0m      [91m))))))[0m 
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m*******[0m      [91m))))))[0m  
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**.[0m             [93m/*******[0m      [91m.))))))[0m  
+              [94m*%%%%%%/[0m      [94m(%%%%%%[0m   [93m********/*..,*/*********[0m       [91m*))))))[0m   
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m*********************/[0m        [91m)))))))[0m    
+                        [94m*%%%%%%,[0m         [93m,**************/[0m         [91m,))))))/[0m     
+                      [94m(%%%%%%[0m   [91m()[0m                              [91m))))))))[0m       
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m,)))))))),[0m        
+                        [94m#,[0m    [91m())))))))))[0m                [91m,)))))))))).[0m          
+                                 [91m()))))))))))))))))))))))))))))))/[0m             
+                                    [91m())))))))))))))))))))))))).[0m                
+                                         [91m())))))))))))))),[0m                     
+
+-=# [1;94m geomeTRIC started. Version: 1.1.1+30.g72efecb [0m #=-
+Current date and time: 2026-06-19 13:46:19
+#========================================================#
+#| [92m    Arguments passed to driver run_optimizer():     [0m |#
+#========================================================#
+coords                    /home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/irc_run/ts_optim.xyz 
+coordsys                  tric 
+engine                    psi4 
+hessian                   file:/home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/ts_run/ts.tmp/hessian/hessian.txt 
+input                     /home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/irc_run/psi4.in 
+irc                       True 
+irc_direction             both 
+nt                        4 
+prefix                    irc 
+----------------------------------------------------------
+ The IRC method requested.
+ Hessian data will be read from file: /home/heejune/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS5_TS6/step_00/ts_run/ts.tmp/hessian/hessian.txt
+Psi4 engine selected. Expecting Psi4 input for gradient calculation.
+Bonds will be generated from interatomic distances less than 1.20 times sum of covalent radii
+39 internal coordinates being used (instead of 39 Cartesians)
+Internal coordinate system (atoms numbered from 1):
+Distance 1-2
+Distance 3-4
+Distance 3-7
+Distance 3-8
+Distance 3-9
+Distance 4-5
+Distance 4-10
+Distance 5-6
+Distance 5-11
+Distance 7-8
+Distance 7-12
+Distance 8-13
+Angle 4-3-9
+Angle 7-3-8
+Angle 7-3-9
+Angle 8-3-9
+Angle 3-4-5
+Angle 3-4-10
+Angle 5-4-10
+Angle 4-5-11
+Angle 6-5-11
+Angle 3-7-12
+Angle 8-7-12
+Angle 3-8-13
+Angle 7-8-13
+Out-of-Plane 3-4-7-9
+Out-of-Plane 3-4-8-9
+Out-of-Plane 5-4-6-11
+Out-of-Plane 7-3-8-12
+Out-of-Plane 8-3-7-13
+Dihedral 7-3-4-5
+Dihedral 7-3-4-10
+Dihedral 8-3-4-5
+Dihedral 8-3-4-10
+Dihedral 9-3-4-5
+Dihedral 9-3-4-10
+Dihedral 4-3-7-8
+Dihedral 4-3-7-12
+Dihedral 8-3-7-12
+Dihedral 9-3-7-8
+Dihedral 9-3-7-12
+Dihedral 4-3-8-7
+Dihedral 4-3-8-13
+Dihedral 7-3-8-13
+Dihedral 9-3-8-7
+Dihedral 9-3-8-13
+Dihedral 3-4-5-6
+Dihedral 3-4-5-11
+Dihedral 10-4-5-6
+Dihedral 10-4-5-11
+Dihedral 3-7-8-13
+Dihedral 12-7-8-3
+Dihedral 12-7-8-13
+Translation-X 1-2
+Translation-X 3-13
+Translation-Y 1-2
+Translation-Y 3-13
+Translation-Z 1-2
+Translation-Z 3-13
+Rotation-A 1-2
+Rotation-A 3-13
+Rotation-B 1-2
+Rotation-B 3-13
+Rotation-C 1-2
+Rotation-C 3-13
+<class 'geometric.internal.Distance'> : 12
+<class 'geometric.internal.Angle'> : 13
+<class 'geometric.internal.OutOfPlane'> : 5
+<class 'geometric.internal.Dihedral'> : 23
+<class 'geometric.internal.TranslationX'> : 2
+<class 'geometric.internal.TranslationY'> : 2
+<class 'geometric.internal.TranslationZ'> : 2
+<class 'geometric.internal.RotationA'> : 2
+<class 'geometric.internal.RotationB'> : 2
+<class 'geometric.internal.RotationC'> : 2
+> ===== Optimization Info: ====
+> Job type: Intrinsic Reaction Coordinate method
+> Maximum number of optimization cycles: 300
+> Initial / maximum trust radius (Angstrom): 0.100 / 0.100
+> Convergence Criteria:
+> Will converge when all 5 criteria are reached:
+>  |Delta-E| < 1.00e-06
+>  RMS-Grad  < 3.00e-04
+>  Max-Grad  < 4.50e-04
+>  RMS-Disp  < 1.20e-03
+>  Max-Disp  < 1.80e-03
+> === End Optimization Info ===
+>> Using Hessian data provided via params...
+>> Initial Cartesian Hessian Eigenvalues
+Hessian Eigenvalues: -7.08223e-02 -5.70596e-05 -3.40267e-05 ... 1.50515e+00 1.89786e+00 1.99958e+00
+
+== Summary of harmonic free energy analysis ==
+Note: Rotational symmetry is set to 1 regardless of true symmetry
+1 Imaginary Frequencies (cm^-1): 411.233i
+Note: Free energy does not include contribution from imaginary mode(s)
+
+Free energy contributions calculated at @ 300.00 K:
+Zero-point vibrational energy:                                   55.4425 kcal/mol 
+H   (Trans + Rot + Vib = Tot):   1.4904 +   0.8942 +   3.3817 =   5.7664 kcal/mol 
+S   (Trans + Rot + Vib = Tot):  39.9237 +  27.9581 +  21.5486 =  89.4303 cal/mol/K
+TS  (Trans + Rot + Vib = Tot):  11.9771 +   8.3874 +   6.4646 =  26.8291 kcal/mol 
+
+Ground State Electronic Energy    : E0                        =  -340.85771025 au (   -213891.4425 kcal/mol)
+Free Energy Correction (Harmonic) : ZPVE + [H-TS]_T,R,V       =     0.05478758 au (        34.3797 kcal/mol)
+Gibbs Free Energy (Harmonic)      : E0 + ZPVE + [H-TS]_T,R,V  =  -340.80292267 au (   -213857.0628 kcal/mol)
+
+Vibrational analysis written to irc_irc.vdata_first
+Step    0 : Gradient = 9.849e-06/1.711e-05 (rms/max) Energy = -340.8577102529
+First, following the imaginary mode vector
+Initial step-size: 0.58420 
+      newCartesian Iter: 4 Cartesian coordinates obtained (rmsd = 2.513e-06 Err-dQ = 6.069e-11)
+=> Total step dy    = 0.13087 
+=> Total step mw-dx = 0.30534 Bohr*sqrt(amu)
+
+Step    1 : Displace = [0m1.792e-02[0m/[0m4.178e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m2.350e-03[0m/[0m6.477e-03[0m (rms/max) E (change) = -340.8579336732 ([0m-2.234e-04[0m) Quality = [0m0.986[0m
+=> Total step dy    = 0.10617 
+=> Total step mw-dx = 0.45985 Bohr*sqrt(amu)
+
+Step    2 : Displace = [0m2.073e-02[0m/[0m4.731e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m4.832e-03[0m/[0m1.162e-02[0m (rms/max) E (change) = -340.8594679490 ([0m-1.534e-03[0m) Quality = [0m1.016[0m
+=> Total step dy    = 0.18286 
+=> Total step mw-dx = 0.54870 Bohr*sqrt(amu)
+
+Step    3 : Displace = [0m2.857e-02[0m/[0m5.979e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m8.790e-03[0m/[0m2.459e-02[0m (rms/max) E (change) = -340.8631095044 ([0m-3.642e-03[0m) Quality = [0m0.972[0m
+=> Total step dy    = 0.13712 
+=> Total step mw-dx = 0.57329 Bohr*sqrt(amu)
+
+Step    4 : Displace = [0m2.470e-02[0m/[0m6.277e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.198e-02[0m/[0m2.961e-02[0m (rms/max) E (change) = -340.8689201374 ([0m-5.811e-03[0m) Quality = [0m0.947[0m
+=> Total step dy    = 0.17777 
+=> Total step mw-dx = 0.57492 Bohr*sqrt(amu)
+
+Step    5 : Displace = [0m2.815e-02[0m/[0m6.192e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.587e-02[0m/[0m4.731e-02[0m (rms/max) E (change) = -340.8762653815 ([0m-7.345e-03[0m) Quality = [0m0.877[0m
+=> Total step dy    = 0.35649 
+=> Total step mw-dx = 0.54436 Bohr*sqrt(amu)
+
+Step    6 : Displace = [0m4.174e-02[0m/[0m1.205e-01[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.831e-02[0m/[0m1.087e-01[0m (rms/max) E (change) = -340.8756985956 ([91m+5.668e-04[0m) Quality = [91m-0.011[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+[1;94mInternal coordinate system may have changed[0m
+-- Added: --
+Distance 1-4
+Angle 2-1-4
+Angle 1-4-3
+Angle 1-4-5
+Angle 1-4-10
+Dihedral 2-1-4-3
+Dihedral 2-1-4-5
+Dihedral 2-1-4-10
+Dihedral 7-3-4-1
+Dihedral 8-3-4-1
+Dihedral 9-3-4-1
+Dihedral 1-4-5-6
+Dihedral 1-4-5-11
+Translation-X 1-13
+Translation-Y 1-13
+Translation-Z 1-13
+Rotation-A 1-13
+Rotation-B 1-13
+Rotation-C 1-13
+-- Deleted: --
+Translation-X 1-2
+Translation-X 3-13
+Translation-Y 1-2
+Translation-Y 3-13
+Translation-Z 1-2
+Translation-Z 3-13
+Rotation-A 1-2
+Rotation-A 3-13
+Rotation-B 1-2
+Rotation-B 3-13
+Rotation-C 1-2
+Rotation-C 3-13
+Refreshing coordinate system and resetting rotations
+=> Total step dy    = 0.03509 
+=> Total step mw-dx = 0.10342 Bohr*sqrt(amu)
+
+Step    6 : Displace = [0m4.515e-03[0m/[0m1.097e-02[0m (rms/max) Trust = 2.087e-02 ([1;91mx[0m) Grad = [0m1.671e-02[0m/[0m5.041e-02[0m (rms/max) E (change) = -340.8777289153 ([0m-1.464e-03[0m) Quality = [0m1.065[0m
+=> Total step dy    = 0.09817 
+=> Total step mw-dx = 0.16740 Bohr*sqrt(amu)
+
+Step    7 : Displace = [0m1.132e-02[0m/[0m3.071e-02[0m (rms/max) Trust = 2.951e-02 ([92m+[0m) Grad = [0m1.700e-02[0m/[0m4.582e-02[0m (rms/max) E (change) = -340.8797244627 ([0m-1.996e-03[0m) Quality = [0m0.474[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+=> Total step dy    = 0.01667 
+=> Total step mw-dx = 0.03299 Bohr*sqrt(amu)
+
+Step    7 : Displace = [0m1.948e-03[0m/[0m4.743e-03[0m (rms/max) Trust = 5.660e-03 ([1;91mx[0m) Grad = [0m1.590e-02[0m/[0m4.682e-02[0m (rms/max) E (change) = -340.8782761110 ([0m-5.472e-04[0m) Quality = [0m0.900[0m
+=> Total step dy    = 0.01914 
+=> Total step mw-dx = 0.04666 Bohr*sqrt(amu)
+
+Step    8 : Displace = [0m2.398e-03[0m/[0m6.041e-03[0m (rms/max) Trust = 8.004e-03 ([92m+[0m) Grad = [0m1.563e-02[0m/[0m4.487e-02[0m (rms/max) E (change) = -340.8790284536 ([0m-7.523e-04[0m) Quality = [0m1.001[0m
+=> Total step dy    = 0.02425 
+=> Total step mw-dx = 0.06594 Bohr*sqrt(amu)
+
+Step    9 : Displace = [0m3.197e-03[0m/[0m8.287e-03[0m (rms/max) Trust = 1.132e-02 ([92m+[0m) Grad = [0m1.562e-02[0m/[0m4.368e-02[0m (rms/max) E (change) = -340.8800767081 ([0m-1.048e-03[0m) Quality = [0m1.001[0m
+=> Total step dy    = 0.03101 
+=> Total step mw-dx = 0.09314 Bohr*sqrt(amu)
+
+Step   10 : Displace = [0m4.275e-03[0m/[0m1.132e-02[0m (rms/max) Trust = 1.601e-02 ([92m+[0m) Grad = [0m1.584e-02[0m/[0m4.323e-02[0m (rms/max) E (change) = -340.8815604600 ([0m-1.484e-03[0m) Quality = [0m1.002[0m
+=> Total step dy    = 0.04216 
+=> Total step mw-dx = 0.13132 Bohr*sqrt(amu)
+
+Step   11 : Displace = [0m5.907e-03[0m/[0m1.567e-02[0m (rms/max) Trust = 2.264e-02 ([92m+[0m) Grad = [0m1.622e-02[0m/[0m4.315e-02[0m (rms/max) E (change) = -340.8836801816 ([0m-2.120e-03[0m) Quality = [0m1.002[0m
+=> Total step dy    = 0.09735 
+=> Total step mw-dx = 0.14667 Bohr*sqrt(amu)
+
+Step   12 : Displace = [0m9.514e-03[0m/[0m2.462e-02[0m (rms/max) Trust = 3.202e-02 ([92m+[0m) Grad = [0m1.982e-02[0m/[0m6.009e-02[0m (rms/max) E (change) = -340.8851176041 ([0m-1.437e-03[0m) Quality = [0m0.152[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+=> Total step dy    = 0.01127 
+=> Total step mw-dx = 0.02596 Bohr*sqrt(amu)
+
+Step   12 : Displace = [0m1.276e-03[0m/[0m2.956e-03[0m (rms/max) Trust = 4.757e-03 ([1;91mx[0m) Grad = [0m1.632e-02[0m/[0m4.457e-02[0m (rms/max) E (change) = -340.8840718582 ([0m-3.917e-04[0m) Quality = [0m0.782[0m
+=> Total step dy    = 0.01140 
+=> Total step mw-dx = 0.03922 Bohr*sqrt(amu)
+
+Step   13 : Displace = [0m1.674e-03[0m/[0m4.495e-03[0m (rms/max) Trust = 6.727e-03 ([92m+[0m) Grad = [0m1.642e-02[0m/[0m4.477e-02[0m (rms/max) E (change) = -340.8847170925 ([0m-6.452e-04[0m) Quality = [0m1.002[0m
+=> Total step dy    = 0.01584 
+=> Total step mw-dx = 0.05543 Bohr*sqrt(amu)
+
+Step   14 : Displace = [0m2.350e-03[0m/[0m6.332e-03[0m (rms/max) Trust = 9.514e-03 ([92m+[0m) Grad = [0m1.656e-02[0m/[0m4.499e-02[0m (rms/max) E (change) = -340.8856362208 ([0m-9.191e-04[0m) Quality = [0m1.000[0m
+=> Total step dy    = 0.02228 
+=> Total step mw-dx = 0.07829 Bohr*sqrt(amu)
+
+Step   15 : Displace = [0m3.315e-03[0m/[0m8.871e-03[0m (rms/max) Trust = 1.345e-02 ([92m+[0m) Grad = [0m1.675e-02[0m/[0m4.540e-02[0m (rms/max) E (change) = -340.8869487755 ([0m-1.313e-03[0m) Quality = [0m1.000[0m
+=> Total step dy    = 0.03126 
+=> Total step mw-dx = 0.11054 Bohr*sqrt(amu)
+
+Step   16 : Displace = [0m4.667e-03[0m/[0m1.250e-02[0m (rms/max) Trust = 1.903e-02 ([92m+[0m) Grad = [0m1.698e-02[0m/[0m4.583e-02[0m (rms/max) E (change) = -340.8888286929 ([0m-1.880e-03[0m) Quality = [0m0.999[0m
+=> Total step dy    = 0.04405 
+=> Total step mw-dx = 0.15595 Bohr*sqrt(amu)
+
+Step   17 : Displace = [0m6.599e-03[0m/[0m1.753e-02[0m (rms/max) Trust = 2.691e-02 ([92m+[0m) Grad = [0m1.727e-02[0m/[0m4.661e-02[0m (rms/max) E (change) = -340.8915283311 ([0m-2.700e-03[0m) Quality = [0m0.998[0m
+=> Total step dy    = 0.04882 
+=> Total step mw-dx = 0.20324 Bohr*sqrt(amu)
+
+Step   18 : Displace = [0m9.157e-03[0m/[0m2.627e-02[0m (rms/max) Trust = 3.806e-02 ([92m+[0m) Grad = [0m1.886e-02[0m/[0m5.150e-02[0m (rms/max) E (change) = -340.8945115619 ([0m-2.983e-03[0m) Quality = [0m0.729[0m
+=> Total step dy    = 0.07164 
+=> Total step mw-dx = 0.20944 Bohr*sqrt(amu)
+
+Step   19 : Displace = [0m9.710e-03[0m/[0m2.369e-02[0m (rms/max) Trust = 3.806e-02 (=) Grad = [0m1.775e-02[0m/[0m4.639e-02[0m (rms/max) E (change) = -340.8983952687 ([0m-3.884e-03[0m) Quality = [0m0.997[0m
+=> Total step dy    = 0.09524 
+=> Total step mw-dx = 0.30907 Bohr*sqrt(amu)
+
+Step   20 : Displace = [0m1.324e-02[0m/[0m3.429e-02[0m (rms/max) Trust = 5.382e-02 ([92m+[0m) Grad = [0m1.759e-02[0m/[0m4.534e-02[0m (rms/max) E (change) = -340.9039644667 ([0m-5.569e-03[0m) Quality = [0m0.980[0m
+=> Total step dy    = 0.12604 
+=> Total step mw-dx = 0.43429 Bohr*sqrt(amu)
+
+Step   21 : Displace = [0m1.929e-02[0m/[0m4.797e-02[0m (rms/max) Trust = 7.611e-02 ([92m+[0m) Grad = [0m1.753e-02[0m/[0m4.429e-02[0m (rms/max) E (change) = -340.9116230811 ([0m-7.659e-03[0m) Quality = [0m0.962[0m
+=> Total step dy    = 0.17994 
+=> Total step mw-dx = 0.53711 Bohr*sqrt(amu)
+
+Step   22 : Displace = [0m2.542e-02[0m/[0m6.075e-02[0m (rms/max) Trust = 1.000e-01 ([92m+[0m) Grad = [0m1.831e-02[0m/[0m4.880e-02[0m (rms/max) E (change) = -340.9202678342 ([0m-8.645e-03[0m) Quality = [0m0.879[0m
+=> Total step dy    = 0.15531 
+=> Total step mw-dx = 0.45041 Bohr*sqrt(amu)
+
+Step   23 : Displace = [0m2.380e-02[0m/[0m5.221e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.537e-02[0m/[0m3.695e-02[0m (rms/max) E (change) = -340.9275721147 ([0m-7.304e-03[0m) Quality = [0m0.952[0m
+=> Total step dy    = 0.15050 
+=> Total step mw-dx = 0.48482 Bohr*sqrt(amu)
+
+Step   24 : Displace = [0m2.364e-02[0m/[0m5.455e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.353e-02[0m/[0m3.302e-02[0m (rms/max) E (change) = -340.9344925514 ([0m-6.920e-03[0m) Quality = [0m0.959[0m
+=> Total step dy    = 0.14463 
+=> Total step mw-dx = 0.49057 Bohr*sqrt(amu)
+
+Step   25 : Displace = [0m2.355e-02[0m/[0m5.294e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.101e-02[0m/[0m2.649e-02[0m (rms/max) E (change) = -340.9406125281 ([0m-6.120e-03[0m) Quality = [0m0.987[0m
+=> Total step dy    = 0.20709 
+=> Total step mw-dx = 0.50381 Bohr*sqrt(amu)
+
+Step   26 : Displace = [0m3.007e-02[0m/[0m6.787e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.011e-02[0m/[0m2.531e-02[0m (rms/max) E (change) = -340.9456191855 ([0m-5.007e-03[0m) Quality = [0m0.935[0m
+=> Total step dy    = 0.27167 
+=> Total step mw-dx = 0.51024 Bohr*sqrt(amu)
+
+Step   27 : Displace = [0m2.869e-02[0m/[0m5.861e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m8.800e-03[0m/[0m1.914e-02[0m (rms/max) E (change) = -340.9486970625 ([0m-3.078e-03[0m) Quality = [0m0.595[0m
+=> Total step dy    = 0.37692 
+=> Total step mw-dx = 0.48220 Bohr*sqrt(amu)
+
+Step   28 : Displace = [0m4.204e-02[0m/[0m1.199e-01[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m2.109e-02[0m/[0m3.978e-02[0m (rms/max) E (change) = -340.9487409313 ([0m-4.387e-05[0m) Quality = [0m0.010[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+=> Total step dy    = 0.11684 
+=> Total step mw-dx = 0.11711 Bohr*sqrt(amu)
+
+Step   28 : Displace = [0m1.231e-02[0m/[0m3.595e-02[0m (rms/max) Trust = 2.102e-02 ([1;91mx[0m) Grad = [0m7.170e-03[0m/[0m1.483e-02[0m (rms/max) E (change) = -340.9498253401 ([0m-1.128e-03[0m) Quality = [0m0.819[0m
+=> Total step dy    = 0.11944 
+=> Total step mw-dx = 0.15380 Bohr*sqrt(amu)
+
+Step   29 : Displace = [0m1.439e-02[0m/[0m4.210e-02[0m (rms/max) Trust = 2.973e-02 ([92m+[0m) Grad = [0m8.308e-03[0m/[0m2.017e-02[0m (rms/max) E (change) = -340.9507329833 ([0m-9.076e-04[0m) Quality = [0m0.708[0m
+=> Total step dy    = 0.06287 
+=> Total step mw-dx = 0.13381 Bohr*sqrt(amu)
+
+Step   30 : Displace = [0m7.846e-03[0m/[0m1.701e-02[0m (rms/max) Trust = 2.973e-02 (=) Grad = [0m5.904e-03[0m/[0m1.454e-02[0m (rms/max) E (change) = -340.9516514722 ([0m-9.185e-04[0m) Quality = [0m0.931[0m
+=> Total step dy    = 0.08019 
+=> Total step mw-dx = 0.21503 Bohr*sqrt(amu)
+
+Step   31 : Displace = [0m1.209e-02[0m/[0m2.329e-02[0m (rms/max) Trust = 4.204e-02 ([92m+[0m) Grad = [0m4.959e-03[0m/[0m1.248e-02[0m (rms/max) E (change) = -340.9528082975 ([0m-1.157e-03[0m) Quality = [0m0.977[0m
+=> Total step dy    = 0.12090 
+=> Total step mw-dx = 0.30441 Bohr*sqrt(amu)
+
+Step   32 : Displace = [0m1.694e-02[0m/[0m3.067e-02[0m (rms/max) Trust = 5.945e-02 ([92m+[0m) Grad = [0m3.408e-03[0m/[0m8.492e-03[0m (rms/max) E (change) = -340.9541179838 ([0m-1.310e-03[0m) Quality = [0m1.004[0m
+=> Total step dy    = 0.17406 
+=> Total step mw-dx = 0.44250 Bohr*sqrt(amu)
+
+Step   33 : Displace = [0m2.689e-02[0m/[0m5.342e-02[0m (rms/max) Trust = 8.408e-02 ([92m+[0m) Grad = [0m2.189e-03[0m/[0m4.929e-03[0m (rms/max) E (change) = -340.9553804838 ([0m-1.263e-03[0m) Quality = [0m1.005[0m
+=> Total step dy    = 0.16840 
+=> Total step mw-dx = 0.50583 Bohr*sqrt(amu)
+
+Step   34 : Displace = [0m3.021e-02[0m/[0m6.233e-02[0m (rms/max) Trust = 1.000e-01 ([92m+[0m) Grad = [0m2.776e-03[0m/[0m7.423e-03[0m (rms/max) E (change) = -340.9560799379 ([0m-6.995e-04[0m) Quality = [0m0.893[0m
+=> Total step dy    = 0.11605 
+=> Total step mw-dx = 0.27874 Bohr*sqrt(amu)
+
+Step   35 : Displace = [0m1.821e-02[0m/[0m3.080e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.935e-03[0m/[0m1.148e-02[0m (rms/max) E (change) = -340.9561861833 ([0m-1.062e-04[0m) Quality = [0m0.301[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+[1;94mInternal coordinate system may have changed[0m
+-- Added: --
+LinearAngleX 2-1-4
+LinearAngleY 2-1-4
+-- Deleted: --
+Angle 2-1-4
+Dihedral 2-1-4-3
+Dihedral 2-1-4-5
+Dihedral 2-1-4-10
+Refreshing coordinate system and resetting rotations
+=> Total step dy    = 0.02845 
+=> Total step mw-dx = 0.04242 Bohr*sqrt(amu)
+
+Step   35 : Displace = [0m3.934e-03[0m/[0m1.115e-02[0m (rms/max) Trust = 9.106e-03 ([1;91mx[0m) Grad = [0m2.006e-03[0m/[0m3.947e-03[0m (rms/max) E (change) = -340.9561290502 ([0m-4.911e-05[0m) Quality = [0m0.303[0m
+[93mRejecting step - low quality IRC step[0m
+Checking coordinate system
+=> Total step dy    = 0.00758 
+=> Total step mw-dx = 0.01102 Bohr*sqrt(amu)
+
+Step   35 : Displace = [92m1.043e-03[0m/[0m2.768e-03[0m (rms/max) Trust = 1.967e-03 ([1;91mx[0m) Grad = [0m1.773e-03[0m/[0m4.201e-03[0m (rms/max) E (change) = -340.9561110541 ([0m-3.112e-05[0m) Quality = [0m0.861[0m
+=> Total step dy    = 0.00744 
+=> Total step mw-dx = 0.01435 Bohr*sqrt(amu)
+
+Step   36 : Displace = [92m1.075e-03[0m/[0m2.827e-03[0m (rms/max) Trust = 2.782e-03 ([92m+[0m) Grad = [0m1.380e-03[0m/[0m2.772e-03[0m (rms/max) E (change) = -340.9561336229 ([0m-2.257e-05[0m) Quality = [0m0.698[0m
+=> Total step dy    = 0.00482 
+=> Total step mw-dx = 0.01556 Bohr*sqrt(amu)
+
+Step   37 : Displace = [92m9.873e-04[0m/[92m1.661e-03[0m (rms/max) Trust = 2.782e-03 (=) Grad = [0m1.237e-03[0m/[0m2.248e-03[0m (rms/max) E (change) = -340.9561559304 ([0m-2.231e-05[0m) Quality = [0m1.003[0m
+=> Total step dy    = 0.00587 
+=> Total step mw-dx = 0.02285 Bohr*sqrt(amu)
+
+Step   38 : Displace = [0m1.364e-03[0m/[0m2.232e-03[0m (rms/max) Trust = 3.934e-03 ([92m+[0m) Grad = [0m1.104e-03[0m/[0m2.120e-03[0m (rms/max) E (change) = -340.9561846558 ([0m-2.873e-05[0m) Quality = [0m1.004[0m
+=> Total step dy    = 0.00775 
+=> Total step mw-dx = 0.03222 Bohr*sqrt(amu)
+
+Step   39 : Displace = [0m1.962e-03[0m/[0m3.254e-03[0m (rms/max) Trust = 5.563e-03 ([92m+[0m) Grad = [0m9.897e-04[0m/[0m1.900e-03[0m (rms/max) E (change) = -340.9562208871 ([0m-3.623e-05[0m) Quality = [0m1.010[0m
+=> Total step dy    = 0.01075 
+=> Total step mw-dx = 0.04559 Bohr*sqrt(amu)
+
+Step   40 : Displace = [0m2.802e-03[0m/[0m4.911e-03[0m (rms/max) Trust = 7.868e-03 ([92m+[0m) Grad = [0m8.628e-04[0m/[0m1.713e-03[0m (rms/max) E (change) = -340.9562663609 ([0m-4.547e-05[0m) Quality = [0m1.008[0m
+=> Total step dy    = 0.01521 
+=> Total step mw-dx = 0.06472 Bohr*sqrt(amu)
+
+Step   41 : Displace = [0m4.044e-03[0m/[0m7.124e-03[0m (rms/max) Trust = 1.113e-02 ([92m+[0m) Grad = [0m7.593e-04[0m/[0m1.499e-03[0m (rms/max) E (change) = -340.9563227067 ([0m-5.635e-05[0m) Quality = [0m1.009[0m
+=> Total step dy    = 0.02021 
+=> Total step mw-dx = 0.09079 Bohr*sqrt(amu)
+
+Step   42 : Displace = [0m5.549e-03[0m/[0m9.824e-03[0m (rms/max) Trust = 1.574e-02 ([92m+[0m) Grad = [0m6.099e-04[0m/[0m1.214e-03[0m (rms/max) E (change) = -340.9563892609 ([0m-6.655e-05[0m) Quality = [0m1.011[0m
+=> Total step dy    = 0.02680 
+=> Total step mw-dx = 0.12748 Bohr*sqrt(amu)
+
+Step   43 : Displace = [0m7.679e-03[0m/[0m1.398e-02[0m (rms/max) Trust = 2.225e-02 ([92m+[0m) Grad = [0m5.820e-04[0m/[0m1.331e-03[0m (rms/max) E (change) = -340.9564612135 ([0m-7.195e-05[0m) Quality = [0m0.992[0m
+=> Total step dy    = 0.02586 
+=> Total step mw-dx = 0.13785 Bohr*sqrt(amu)
+
+Step   44 : Displace = [0m7.506e-03[0m/[0m1.443e-02[0m (rms/max) Trust = 3.147e-02 ([92m+[0m) Grad = [0m6.313e-04[0m/[0m1.431e-03[0m (rms/max) E (change) = -340.9565102895 ([0m-4.908e-05[0m) Quality = [0m0.850[0m
+=> Total step dy    = 0.02630 
+=> Total step mw-dx = 0.13195 Bohr*sqrt(amu)
+
+Step   45 : Displace = [0m7.408e-03[0m/[0m1.361e-02[0m (rms/max) Trust = 4.451e-02 ([92m+[0m) Grad = [0m5.340e-04[0m/[0m1.545e-03[0m (rms/max) E (change) = -340.9565418061 ([0m-3.152e-05[0m) Quality = [0m0.740[0m
+=> Total step dy    = 0.02804 
+=> Total step mw-dx = 0.11735 Bohr*sqrt(amu)
+
+Step   46 : Displace = [0m6.623e-03[0m/[0m1.327e-02[0m (rms/max) Trust = 4.451e-02 (=) Grad = [92m1.811e-04[0m/[92m3.470e-04[0m (rms/max) E (change) = -340.9565630684 ([0m-2.126e-05[0m) Quality = [0m1.010[0m
+=> Total step dy    = 0.05824 
+=> Total step mw-dx = 0.20165 Bohr*sqrt(amu)
+
+Step   47 : Displace = [0m1.384e-02[0m/[0m2.347e-02[0m (rms/max) Trust = 6.294e-02 ([92m+[0m) Grad = [92m1.296e-04[0m/[92m2.491e-04[0m (rms/max) E (change) = -340.9565821492 ([0m-1.908e-05[0m) Quality = [0m1.003[0m
+=> Total step dy    = 0.06387 
+=> Total step mw-dx = 0.20418 Bohr*sqrt(amu)
+
+Step   48 : Displace = [0m1.519e-02[0m/[0m2.503e-02[0m (rms/max) Trust = 8.902e-02 ([92m+[0m) Grad = [92m1.075e-04[0m/[92m1.668e-04[0m (rms/max) E (change) = -340.9565939377 ([0m-1.179e-05[0m) Quality = [0m0.996[0m
+=> Total step dy    = 0.04201 
+=> Total step mw-dx = 0.13178 Bohr*sqrt(amu)
+
+Step   49 : Displace = [0m9.623e-03[0m/[0m1.473e-02[0m (rms/max) Trust = 1.000e-01 ([92m+[0m) Grad = [92m1.404e-04[0m/[92m3.088e-04[0m (rms/max) E (change) = -340.9565978809 ([0m-3.943e-06[0m) Quality = [0m0.847[0m
+=> Total step dy    = 0.02130 
+=> Total step mw-dx = 0.08262 Bohr*sqrt(amu)
+
+Step   50 : Displace = [0m5.379e-03[0m/[0m8.519e-03[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m1.077e-04[0m/[92m2.731e-04[0m (rms/max) E (change) = -340.9565997911 ([0m-1.910e-06[0m) Quality = [0m0.855[0m
+=> Total step dy    = 0.01888 
+=> Total step mw-dx = 0.07372 Bohr*sqrt(amu)
+
+Step   51 : Displace = [0m4.117e-03[0m/[0m6.426e-03[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m2.785e-05[0m/[92m4.925e-05[0m (rms/max) E (change) = -340.9566006137 ([92m-8.226e-07[0m) Quality = [0m0.760[0m
+Switching to optimization
+Hessian Eigenvalues: -4.42634e-04 -9.49529e-05 -2.95329e-05 ... 5.60092e-01 7.60758e-01 2.08098e+00
+Step   52 : Displace = [0m6.529e-03[0m/[0m1.480e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.206e-04[0m/[0m5.858e-04[0m (rms/max) E (change) = -340.9565945529 ([91m+6.061e-06[0m) Quality = [91m-0.336[0m
+Poor-quality step dominated by net translation/rotation detected; will project out net forces and torques past this point.
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues: -4.42634e-04 -9.49529e-05 -2.95329e-05 ... 5.60092e-01 7.60758e-01 2.08098e+00
+Step   53 : Displace = [0m3.128e-03[0m/[0m5.783e-03[0m (rms/max) Trust = 3.265e-03 ([1;91mx[0m) Grad = [92m7.627e-05[0m/[92m1.666e-04[0m (rms/max) E (change) = -340.9566004687 ([92m+1.450e-07[0m) Quality = [91m-0.014[0m
+[93mNot rejecting step - energy change meets convergence criteria[0m
+Hessian Eigenvalues: -1.81519e-04 -7.27493e-05 -1.72570e-05 ... 5.60692e-01 7.61054e-01 2.08336e+00
+Step   54 : Displace = [0m1.582e-03[0m/[0m3.466e-03[0m (rms/max) Trust = 1.564e-03 ([91m-[0m) Grad = [92m4.689e-05[0m/[92m9.686e-05[0m (rms/max) E (change) = -340.9566007943 ([92m-3.256e-07[0m) Quality = [0m0.418[0m
+Hessian Eigenvalues: -1.45635e-04 -6.73076e-05 -1.17917e-05 ... 5.60352e-01 7.61655e-01 2.08930e+00
+Step   55 : Displace = [92m7.919e-04[0m/[92m1.264e-03[0m (rms/max) Trust = 7.819e-04 ([91m-[0m) Grad = [92m1.613e-05[0m/[92m3.690e-05[0m (rms/max) E (change) = -340.9566009527 ([92m-1.584e-07[0m) Quality = [0m0.835[0m
+
+The IRC calculation in the forward direction has converged.
+The IRC calculation in the backward direction starts here.
+
+Step    0 : Gradient = 9.849e-06/1.711e-05 (rms/max) Energy = -340.8577102529
+First, following the imaginary mode vector
+Initial step-size: 0.58420 
+      newCartesian Iter: 4 Cartesian coordinates obtained (rmsd = 2.217e-06 Err-dQ = 4.304e-11)
+=> Total step dy    = 0.13172 
+=> Total step mw-dx = 0.30909 Bohr*sqrt(amu)
+
+Step    1 : Displace = [0m1.800e-02[0m/[0m4.143e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m2.263e-03[0m/[0m5.972e-03[0m (rms/max) E (change) = -340.8579453803 ([0m-2.351e-04[0m) Quality = [0m1.018[0m
+=> Total step dy    = 0.09702 
+=> Total step mw-dx = 0.47157 Bohr*sqrt(amu)
+
+Step    2 : Displace = [0m2.127e-02[0m/[0m4.776e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m4.591e-03[0m/[0m1.182e-02[0m (rms/max) E (change) = -340.8594588344 ([0m-1.513e-03[0m) Quality = [0m0.984[0m
+=> Total step dy    = 0.20858 
+=> Total step mw-dx = 0.54763 Bohr*sqrt(amu)
+
+Step    3 : Displace = [0m3.099e-02[0m/[0m7.304e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m8.112e-03[0m/[0m2.202e-02[0m (rms/max) E (change) = -340.8628875756 ([0m-3.429e-03[0m) Quality = [0m0.976[0m
+=> Total step dy    = 0.11283 
+=> Total step mw-dx = 0.56847 Bohr*sqrt(amu)
+
+Step    4 : Displace = [0m2.484e-02[0m/[0m6.007e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.098e-02[0m/[0m3.045e-02[0m (rms/max) E (change) = -340.8681498152 ([0m-5.262e-03[0m) Quality = [0m0.946[0m
+=> Total step dy    = 0.21630 
+=> Total step mw-dx = 0.57081 Bohr*sqrt(amu)
+
+Step    5 : Displace = [0m3.213e-02[0m/[0m7.523e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.394e-02[0m/[0m3.733e-02[0m (rms/max) E (change) = -340.8744950514 ([0m-6.345e-03[0m) Quality = [0m0.855[0m
+=> Total step dy    = 0.12110 
+=> Total step mw-dx = 0.43686 Bohr*sqrt(amu)
+
+Step    6 : Displace = [0m2.056e-02[0m/[0m4.588e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.644e-02[0m/[0m4.158e-02[0m (rms/max) E (change) = -340.8796889856 ([0m-5.194e-03[0m) Quality = [0m1.061[0m
+=> Total step dy    = 0.07841 
+=> Total step mw-dx = 0.39529 Bohr*sqrt(amu)
+
+Step    7 : Displace = [0m1.693e-02[0m/[0m4.561e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.527e-02[0m/[0m3.744e-02[0m (rms/max) E (change) = -340.8851339847 ([0m-5.445e-03[0m) Quality = [0m1.091[0m
+=> Total step dy    = 0.20758 
+=> Total step mw-dx = 0.50392 Bohr*sqrt(amu)
+
+Step    8 : Displace = [0m3.050e-02[0m/[0m7.817e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.671e-02[0m/[0m4.564e-02[0m (rms/max) E (change) = -340.8907686765 ([0m-5.635e-03[0m) Quality = [0m0.801[0m
+=> Total step dy    = 0.14910 
+=> Total step mw-dx = 0.44894 Bohr*sqrt(amu)
+
+Step    9 : Displace = [0m2.304e-02[0m/[0m4.758e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.154e-02[0m/[0m2.742e-02[0m (rms/max) E (change) = -340.8964757615 ([0m-5.707e-03[0m) Quality = [0m0.932[0m
+=> Total step dy    = 0.12158 
+=> Total step mw-dx = 0.52866 Bohr*sqrt(amu)
+
+Step   10 : Displace = [0m2.439e-02[0m/[0m5.585e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.228e-02[0m/[0m3.105e-02[0m (rms/max) E (change) = -340.9016003313 ([0m-5.125e-03[0m) Quality = [0m0.866[0m
+=> Total step dy    = 0.11946 
+=> Total step mw-dx = 0.42274 Bohr*sqrt(amu)
+
+Step   11 : Displace = [0m2.044e-02[0m/[0m3.990e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m9.206e-03[0m/[0m2.211e-02[0m (rms/max) E (change) = -340.9056494931 ([0m-4.049e-03[0m) Quality = [0m0.992[0m
+=> Total step dy    = 0.14391 
+=> Total step mw-dx = 0.47221 Bohr*sqrt(amu)
+
+Step   12 : Displace = [0m2.296e-02[0m/[0m4.728e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m7.870e-03[0m/[0m1.820e-02[0m (rms/max) E (change) = -340.9092850992 ([0m-3.636e-03[0m) Quality = [0m0.952[0m
+=> Total step dy    = 0.10474 
+=> Total step mw-dx = 0.44030 Bohr*sqrt(amu)
+
+Step   13 : Displace = [0m1.983e-02[0m/[0m4.461e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m6.341e-03[0m/[0m1.423e-02[0m (rms/max) E (change) = -340.9120907230 ([0m-2.806e-03[0m) Quality = [0m0.912[0m
+=> Total step dy    = 0.18314 
+=> Total step mw-dx = 0.49063 Bohr*sqrt(amu)
+
+Step   14 : Displace = [0m2.736e-02[0m/[0m5.331e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m7.035e-03[0m/[0m1.573e-02[0m (rms/max) E (change) = -340.9145187391 ([0m-2.428e-03[0m) Quality = [0m0.850[0m
+=> Total step dy    = 0.10921 
+=> Total step mw-dx = 0.41228 Bohr*sqrt(amu)
+
+Step   15 : Displace = [0m1.939e-02[0m/[0m4.495e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m6.931e-03[0m/[0m1.564e-02[0m (rms/max) E (change) = -340.9159065232 ([0m-1.388e-03[0m) Quality = [0m0.651[0m
+=> Total step dy    = 0.09577 
+=> Total step mw-dx = 0.26588 Bohr*sqrt(amu)
+
+Step   16 : Displace = [0m1.670e-02[0m/[0m3.999e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.684e-03[0m/[0m9.075e-03[0m (rms/max) E (change) = -340.9172831198 ([0m-1.377e-03[0m) Quality = [0m1.005[0m
+=> Total step dy    = 0.11307 
+=> Total step mw-dx = 0.42999 Bohr*sqrt(amu)
+
+Step   17 : Displace = [0m2.059e-02[0m/[0m4.876e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.279e-03[0m/[0m8.606e-03[0m (rms/max) E (change) = -340.9186301285 ([0m-1.347e-03[0m) Quality = [0m0.998[0m
+=> Total step dy    = 0.11146 
+=> Total step mw-dx = 0.43037 Bohr*sqrt(amu)
+
+Step   18 : Displace = [0m2.085e-02[0m/[0m4.935e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m3.545e-03[0m/[0m9.142e-03[0m (rms/max) E (change) = -340.9196754909 ([0m-1.045e-03[0m) Quality = [0m0.940[0m
+=> Total step dy    = 0.10873 
+=> Total step mw-dx = 0.42449 Bohr*sqrt(amu)
+
+Step   19 : Displace = [0m2.091e-02[0m/[0m4.871e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m4.729e-03[0m/[0m1.311e-02[0m (rms/max) E (change) = -340.9204260682 ([0m-7.506e-04[0m) Quality = [0m0.758[0m
+=> Total step dy    = 0.07357 
+=> Total step mw-dx = 0.24505 Bohr*sqrt(amu)
+
+Step   20 : Displace = [0m1.185e-02[0m/[0m2.610e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.806e-03[0m/[0m4.189e-03[0m (rms/max) E (change) = -340.9209527580 ([0m-5.267e-04[0m) Quality = [0m1.011[0m
+=> Total step dy    = 0.06615 
+=> Total step mw-dx = 0.31614 Bohr*sqrt(amu)
+
+Step   21 : Displace = [0m1.620e-02[0m/[0m3.712e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.431e-03[0m/[0m3.109e-03[0m (rms/max) E (change) = -340.9214218881 ([0m-4.691e-04[0m) Quality = [0m1.020[0m
+=> Total step dy    = 0.08359 
+=> Total step mw-dx = 0.40833 Bohr*sqrt(amu)
+
+Step   22 : Displace = [0m2.052e-02[0m/[0m4.803e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.157e-03[0m/[0m2.965e-03[0m (rms/max) E (change) = -340.9218804576 ([0m-4.586e-04[0m) Quality = [0m1.002[0m
+=> Total step dy    = 0.07683 
+=> Total step mw-dx = 0.38678 Bohr*sqrt(amu)
+
+Step   23 : Displace = [0m1.940e-02[0m/[0m4.751e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.082e-03[0m/[0m2.786e-03[0m (rms/max) E (change) = -340.9221746140 ([0m-2.942e-04[0m) Quality = [0m0.990[0m
+=> Total step dy    = 0.06492 
+=> Total step mw-dx = 0.30739 Bohr*sqrt(amu)
+
+Step   24 : Displace = [0m1.548e-02[0m/[0m4.034e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.608e-03[0m/[0m4.007e-03[0m (rms/max) E (change) = -340.9223088067 ([0m-1.342e-04[0m) Quality = [0m0.868[0m
+=> Total step dy    = 0.04427 
+=> Total step mw-dx = 0.19123 Bohr*sqrt(amu)
+
+Step   25 : Displace = [0m1.004e-02[0m/[0m2.437e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m6.289e-04[0m/[0m1.484e-03[0m (rms/max) E (change) = -340.9223629945 ([0m-5.419e-05[0m) Quality = [0m0.724[0m
+=> Total step dy    = 0.07943 
+=> Total step mw-dx = 0.29152 Bohr*sqrt(amu)
+
+Step   26 : Displace = [0m1.844e-02[0m/[0m3.668e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.682e-03[0m/[0m4.369e-03[0m (rms/max) E (change) = -340.9224129127 ([0m-4.992e-05[0m) Quality = [0m0.672[0m
+=> Total step dy    = 0.04577 
+=> Total step mw-dx = 0.16243 Bohr*sqrt(amu)
+
+Step   27 : Displace = [0m1.119e-02[0m/[0m2.115e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m1.547e-03[0m/[0m4.045e-03[0m (rms/max) E (change) = -340.9224467765 ([0m-3.386e-05[0m) Quality = [0m0.698[0m
+=> Total step dy    = 0.04340 
+=> Total step mw-dx = 0.12481 Bohr*sqrt(amu)
+
+Step   28 : Displace = [0m9.828e-03[0m/[0m1.527e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m4.185e-04[0m/[0m9.791e-04[0m (rms/max) E (change) = -340.9224737182 ([0m-2.694e-05[0m) Quality = [0m0.988[0m
+=> Total step dy    = 0.06397 
+=> Total step mw-dx = 0.20653 Bohr*sqrt(amu)
+
+Step   29 : Displace = [0m1.571e-02[0m/[0m2.470e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m2.645e-04[0m/[0m5.940e-04[0m (rms/max) E (change) = -340.9225019610 ([0m-2.824e-05[0m) Quality = [0m1.013[0m
+=> Total step dy    = 0.07664 
+=> Total step mw-dx = 0.24103 Bohr*sqrt(amu)
+
+Step   30 : Displace = [0m1.844e-02[0m/[0m2.922e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m1.235e-04[0m/[92m2.357e-04[0m (rms/max) E (change) = -340.9225288746 ([0m-2.691e-05[0m) Quality = [0m1.012[0m
+=> Total step dy    = 0.11708 
+=> Total step mw-dx = 0.37618 Bohr*sqrt(amu)
+
+Step   31 : Displace = [0m2.817e-02[0m/[0m4.480e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m9.237e-05[0m/[92m1.490e-04[0m (rms/max) E (change) = -340.9225577365 ([0m-2.886e-05[0m) Quality = [0m1.009[0m
+=> Total step dy    = 0.09404 
+=> Total step mw-dx = 0.30751 Bohr*sqrt(amu)
+
+Step   32 : Displace = [0m2.287e-02[0m/[0m3.676e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m1.387e-04[0m/[92m3.887e-04[0m (rms/max) E (change) = -340.9225694526 ([0m-1.172e-05[0m) Quality = [0m0.978[0m
+=> Total step dy    = 0.03363 
+=> Total step mw-dx = 0.11316 Bohr*sqrt(amu)
+
+Step   33 : Displace = [0m7.540e-03[0m/[0m1.221e-02[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m1.567e-04[0m/[0m4.654e-04[0m (rms/max) E (change) = -340.9225709903 ([0m-1.538e-06[0m) Quality = [0m0.721[0m
+=> Total step dy    = 0.01693 
+=> Total step mw-dx = 0.06663 Bohr*sqrt(amu)
+
+Step   34 : Displace = [0m4.188e-03[0m/[0m6.711e-03[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m4.685e-05[0m/[92m1.340e-04[0m (rms/max) E (change) = -340.9225715740 ([92m-5.837e-07[0m) Quality = [0m0.764[0m
+Switching to optimization
+Hessian Eigenvalues: -1.68408e-04 -1.21676e-04 -8.89528e-05 ... 7.61375e-01 8.05345e-01 1.37564e+00
+Step   35 : Displace = [0m4.019e-03[0m/[0m7.431e-03[0m (rms/max) Trust = 1.000e-01 (=) Grad = [92m1.399e-04[0m/[92m3.204e-04[0m (rms/max) E (change) = -340.9225702764 ([91m+1.298e-06[0m) Quality = [91m-2.456[0m
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues: -1.68408e-04 -1.21676e-04 -8.89528e-05 ... 7.61375e-01 8.05345e-01 1.37564e+00
+Step   36 : Displace = [0m1.823e-03[0m/[0m4.400e-03[0m (rms/max) Trust = 2.009e-03 ([1;91mx[0m) Grad = [92m5.973e-05[0m/[92m1.464e-04[0m (rms/max) E (change) = -340.9225712347 ([92m+3.393e-07[0m) Quality = [91m-1.011[0m
+[93mNot rejecting step - energy change meets convergence criteria[0m
+Hessian Eigenvalues: -1.44030e+00 -1.21038e-04 -8.43128e-05 ... 5.88975e-01 7.62229e-01 1.01360e+00
+Step   37 : Displace = [92m9.233e-04[0m/[0m1.866e-03[0m (rms/max) Trust = 9.117e-04 ([91m-[0m) Grad = [0m6.932e-04[0m/[0m2.093e-03[0m (rms/max) E (change) = -340.9225669733 ([91m+4.261e-06[0m) Quality = [91m-0.648[0m
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues: -1.44030e+00 -1.21038e-04 -8.43128e-05 ... 5.88975e-01 7.62229e-01 1.01360e+00
+Step   38 : Displace = [92m4.671e-04[0m/[92m9.277e-04[0m (rms/max) Trust = 4.559e-04 ([1;91mx[0m) Grad = [0m3.402e-04[0m/[0m1.031e-03[0m (rms/max) E (change) = -340.9225701672 ([91m+1.068e-06[0m) Quality = [91m-0.650[0m
+[93mRejecting step - quality is lower than 0.0[0m
+Hessian Eigenvalues: -1.44030e+00 -1.21038e-04 -8.43128e-05 ... 5.88975e-01 7.62229e-01 1.01360e+00
+Step   39 : Displace = [92m2.396e-04[0m/[92m4.575e-04[0m (rms/max) Trust = 2.279e-04 ([1;91mx[0m) Grad = [92m1.644e-04[0m/[0m4.963e-04[0m (rms/max) E (change) = -340.9225709769 ([92m+2.578e-07[0m) Quality = [91m-0.620[0m
+[93mNot rejecting step - energy change meets convergence criteria[0m
+Hessian Eigenvalues: -1.21078e-04 -8.43694e-05 -1.12967e-05 ... 7.62210e-01 8.06140e-01 1.47592e+00
+Step   40 : Displace = [92m1.121e-04[0m/[92m2.514e-04[0m (rms/max) Trust = 1.140e-04 ([91m-[0m) Grad = [92m7.041e-05[0m/[92m1.903e-04[0m (rms/max) E (change) = -340.9225712035 ([92m-2.266e-07[0m) Quality = [0m0.987[0m
+Hessian Eigenvalues: -1.21078e-04 -8.43694e-05 -1.12967e-05 ... 7.62210e-01 8.06140e-01 1.47592e+00
+Converged! =D
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of run_optimizer: 2133.041 seconds

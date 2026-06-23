@@ -1,0 +1,1 @@
+/home/heejune/miniconda3/envs/tricflow/bin/python3.12 -m geometric.optimize /home/heejune/dev/TRICFlow/example/individual_steps/CLI/tricflow-optimize/frame_0/psi4_HCN.in --engine psi4 --coordsys tric --coords /home/heejune/dev/TRICFlow/example/individual_steps/CLI/tricflow-optimize/frame_0/coords.xyz

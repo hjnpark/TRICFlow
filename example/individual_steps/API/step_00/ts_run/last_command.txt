@@ -1,0 +1,1 @@
+/home/heejune/miniconda3/envs/tricflow/bin/python -m geometric.optimize /home/heejune/dev/TRICFlow/example/full_workflow_steps/step_00/ts_run/psi4_HCN.in --engine psi4 --coordsys tric --coords /home/heejune/dev/TRICFlow/example/full_workflow_steps/step_00/ts_run/coords.xyz --nt 4 --converge set GAU_TIGHT --transition yes --hessian first+last

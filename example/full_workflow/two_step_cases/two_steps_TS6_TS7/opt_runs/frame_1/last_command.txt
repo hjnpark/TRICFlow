@@ -1,0 +1,1 @@
+/home/heepark/miniconda3/envs/tricflow/bin/python -m geometric.optimize /home/heepark/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS6_TS7/opt_runs/frame_1/psi4.in --engine psi4 --coordsys tric --coords /home/heepark/dev/TRICFlow/example/refine_elementary_step/two_step_cases/two_steps_TS6_TS7/opt_runs/frame_1/coords.xyz --nt 4 --prefix optimize

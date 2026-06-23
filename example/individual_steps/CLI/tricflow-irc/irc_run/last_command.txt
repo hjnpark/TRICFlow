@@ -1,0 +1,1 @@
+/home/heejune/miniconda3/envs/tricflow/bin/python3.12 -m geometric.optimize psi4_HCN.in --engine psi4 --coordsys tric --coords ts_optim.xyz --irc yes --irc_direction both --prefix irc

@@ -49,8 +49,11 @@ coverage.xml
 *.pot
 *.swp
 
-# Django stuff:
-*.log
+nohup.out
+
+# Local environments
+.venv/
+venv/
 
 # PyCharm junk
 .idea
@@ -65,4 +68,12 @@ target/
 # pytest
 .pytest_cache/
 test_generated_files/
+
+# geomeTRIC per-calculation scratch (regenerated on every run)
+**/*.tmp/
+**/timer.dat
+**/run.out
+**/input.dat
+
+AUDIT.md
 
