@@ -1,22 +1,22 @@
 # TRICFlow
 
-**TRICFlow** is a **geomeTRIC reaction-discovery workflow** built on translation–rotation internal coordinates (TRIC). To run it, you need only two inputs: a multi-frame **XYZ file** with reactant and product structures (frame 0 and frame −1), and a **QM input file** (method, basis, charge, multiplicity, etc.). The endpoints are **re-optimized at the start of the workflow** before pathway discovery begins; rough guesses are fine.
+**TRICFlow is a geomeTRIC reaction-discovery workflow** built on translation–rotation internal coordinates (TRIC). To run it, you need only two inputs: a multi-frame XYZ file with reactant and product structures (frame 0 and frame −1), and a QM input file (method, basis, charge, multiplicity, etc.). The endpoints are re-optimized at the start of the workflow before pathway discovery begins; rough guesses are fine.
 
-TRICFlow is built on geomeTRIC and is compatible with **all QM engines supported by geomeTRIC** (e.g. Psi4, Q-Chem, TeraChem, Gaussian, Molpro, and others), selected via `qm_program` in the API or `--qm-program` on the CLI.
+TRICFlow is built on geomeTRIC and is compatible with all QM engines supported by geomeTRIC (e.g. Psi4, Q-Chem, TeraChem, Gaussian, Molpro, and others), selected via `qm_program` in the API or `--qm-program` on the CLI.
 
 Given two endpoint minima, TRICFlow automatically finds and refines the minimum-energy pathway connecting them by chaining elementary steps: endpoint optimization, TRICS interpolation, NEB, transition-state optimization, and IRC—with post-optimization and trajectory concatenation at each barrier-crossing segment.
 
 The high-level driver is `TRICWorkflow` in `tricflow.tricflow` (Python API only—there is no CLI for the full discovery workflow). Individual calculation stages are exposed as Python functions and CLI commands for step-by-step use.
 
-**Performance note:** NEB and Hessian calculations are the main bottlenecks because the workflow runs **sequentially** by default. This can be mitigated by using geomeTRIC's **Work Queue** or **BigChem** backends to parallelize independent gradient and Hessian evaluations across a cluster. See the [CCTools installation guide](https://geometric.readthedocs.io/en/latest/install.html#installation-of-cctools) in the geomeTRIC documentation.
+Performance note: NEB and Hessian calculations are the main bottlenecks because the workflow runs sequentially by default. This can be mitigated by using geomeTRIC's Work Queue or BigChem backends to parallelize independent gradient and Hessian evaluations across a cluster. See the [CCTools installation guide](https://geometric.readthedocs.io/en/latest/install.html#installation-of-cctools) in the geomeTRIC documentation.
 
 ---
 
 ## geomeTRIC compatibility
 
-TRICFlow targets **[geomeTRIC](https://github.com/leeping/geomeTRIC) v1.2.0 or later**, which will include TRICS interpolation this workflow relies on.
+TRICFlow targets [geomeTRIC](https://github.com/leeping/geomeTRIC) v1.2.0 or later, which will include TRICS interpolation this workflow relies on.
 
-**Before that release**, install geomeTRIC from the development branch instead of `pip` or `conda`:
+Before that release, install geomeTRIC from the development branch instead of `pip` or `conda`:
 
 ```shell
 git clone -b interpolate https://github.com/hjnpark/geomeTRIC.git
@@ -60,35 +60,37 @@ pip install -e .
 
 ## Full workflow: `TRICWorkflow`
 
-`TRICWorkflow` is available through the **Python API** (`from tricflow import TRICWorkflow`). It is **not** exposed as a CLI command; use the per-stage CLIs in `example/individual_steps/CLI/` only for isolated optimizations, NEB, TS, or IRC runs.
+`TRICWorkflow` is available through the Python API (`from tricflow import TRICWorkflow`). It is not exposed as a CLI command; use the per-stage CLIs in `example/individual_steps/CLI/` only for isolated optimizations, NEB, TS, or IRC runs.
 
 `TRICWorkflow` discovers a complete reaction pathway between two input minima. The workflow:
 
-1. **Optimizes** the two frames in the input XYZ and writes `optimized_endpoints.xyz`.
-2. **Repeats** an elementary-step cycle until the pathway connects the dynamic targets **a** and **b**:
-   - TRICS **interpolation** between the current segment endpoints
-   - **NEB** (or the converged NEB chain directly when there is no barrier)
-   - **TS optimization** when a climbing image is found
-   - **IRC** from the optimized TS, using the TS Hessian in the full workflow
-   - **Post-optimization** of both IRC endpoints (`postopt=True`), then **concatenation** of the full optimization trajectories at each minimum with the IRC path (reactant opt → IRC → product opt)
-3. **Concatenates** multiple elementary segments when more than one barrier is discovered.
-4. Writes **`full_pathway.xyz`** under `work_dir`.
+1. Optimizes the two frames in the input XYZ and writes `optimized_endpoints.xyz`.
+2. Repeats an elementary-step cycle until the pathway connects the dynamic targets `a` and `b`:
+   - TRICS interpolation between the current segment endpoints
+   - NEB (or the converged NEB chain directly when there is no barrier)
+   - TS optimization when a climbing image is found
+   - IRC from the optimized TS, using the TS Hessian in the full workflow
+   - Post-optimization of both IRC endpoints (`postopt=True`), then concatenation of the full optimization trajectories at each minimum with the IRC path (reactant opt → IRC → product opt)
+3. Concatenates multiple elementary segments when more than one barrier is discovered.
+4. Writes `full_pathway.xyz` under `work_dir`.
 
-### Dynamic targets **a** and **b**
+### Dynamic targets `a` and `b`
 
-The targets are not fixed labels on the original input frames. They start as the optimized reactant (frame 0) and product (frame −1), but **update as the pathway grows**:
+The targets are not fixed labels on the original input frames. They start as the optimized reactant (frame 0) and product (frame −1), but update as the pathway grows:
 
-- When **both** IRC endpoints match the current targets (within `rmsd_threshold`, default 0.1 Å), that elementary segment is accepted and the workflow is complete.
-- When **one** IRC endpoint matches a target (say `ep0 → a`), the matched label **moves to the other IRC end** (`a` becomes `ep1`), while the unmatched label keeps pointing at the other initially optimized structure (`b`) until it is matched in a later step. The workflow then launches another elementary step from the junction toward the still-unmatched minimum.
-- The workflow only finishes when **both ends of the latest IRC** match the current dynamic **a** and **b**.
+- When both IRC endpoints match the current targets (within `rmsd_threshold`, default 0.1 Å), that elementary segment is accepted and the workflow is complete.
+- When one IRC endpoint matches a target (say `ep0 → a`), the matched label moves to the other IRC end (`a` becomes `ep1`), while the unmatched label keeps pointing at the other initially optimized structure (`b`) until it is matched in a later step. The workflow then launches another elementary step from the junction toward the still-unmatched minimum.
+- The workflow only finishes when both ends of the latest IRC match the current dynamic `a` and `b`.
 
 ### Orienting segments when endpoints do not match
 
-If a newly discovered IRC segment's endpoints do not yet match **a** and **b**, TRICFlow orients the trajectory before extending the pathway:
+If a newly discovered IRC segment's endpoints do not yet match `a` and `b`, TRICFlow orients the trajectory before extending the pathway:
 
-- **Both ends match but reversed** (`ep0 → b`, `ep1 → a`): the trajectory is flipped so it runs **a → b**.
-- **Neither end matches**: TRICFlow compares TRIC **primitive topology** (which internal coordinates are present, not their numerical values) at the IRC endpoints against the optimized endpoint frames. Endpoint-unique primitives are scored for direct (`ep0→a`, `ep1→b`) vs flipped (`ep0→b`, `ep1→a`) assignment; the winning orientation is used, then missing directions are refined recursively.
-- **One end matches**: the segment is oriented at the junction frame and concatenated with the next elementary step.
+- Both ends match but reversed (`ep0 → b`, `ep1 → a`): the trajectory is flipped so it runs `a → b`.
+- Neither end matches: TRICFlow compares TRIC primitive internal coordinate (PIC) topology at the IRC endpoints against the optimized endpoint frames. Endpoint-unique primitives are scored for direct (`ep0→a`, `ep1→b`) vs flipped (`ep0→b`, `ep1→a`) assignment. When both IRC endpoints share the same PIC topology (no endpoint-unique primitives), topology alone cannot distinguish the orientation; in that case TRICFlow compares `Angle` primitive values at each end against the targets and picks the lower-deviation assignment. The winning orientation is used, then missing directions are refined recursively.
+- One end matches: the segment is oriented at the junction frame and concatenated with the next elementary step.
+
+Set `verbose=1` to log PIC topology scores or angle-based costs during orientation.
 
 ### Example script
 
@@ -132,19 +134,19 @@ TRICFlow caches geomeTRIC results on disk so interrupted runs can be resumed wit
 | Endpoint optimization | `opt_runs/frame_*`, `optimized_endpoints.xyz` |
 | Elementary step *N* | `step_{N:02d}/` — `endpoints.xyz`, `interpolated.xyz`, `neb_run/`, `ts_run/`, `irc_run/` |
 
-A prior calculation is **reused** when:
+A prior calculation is reused when:
 
-- Its log shows a **convergence marker** (e.g. `Converged!` for optimizations, or the corresponding marker for NEB/IRC/interpolation).
-- The **input coordinates** still match (same `initial.xyz` frames, or unchanged `step_XX/endpoints.xyz`).
-- The QM **method, basis, charge, and multiplicity** are unchanged between the cached input file in the run directory and your current QM input template.
+- Its log shows a convergence marker (e.g. `Converged!` for optimizations, or the corresponding marker for NEB/IRC/interpolation).
+- The input coordinates still match (same `initial.xyz` frames, or unchanged `step_XX/endpoints.xyz`).
+- The QM method, basis, charge, and multiplicity are unchanged between the cached input file in the run directory and your current QM input template.
 
-If method, basis, charge, or multiplicity change, TRICFlow treats the cache as **invalid** and renames the conflicting run directory (e.g. `neb_run` → `neb_run_0`) before starting fresh.
+If method, basis, charge, or multiplicity change, TRICFlow treats the cache as invalid and renames the conflicting run directory (e.g. `neb_run` → `neb_run_0`) before starting fresh.
 
-Other geomeTRIC options (coordinate system, convergence criteria, `maxiter`, NEB thresholds, etc.) may differ from the cached run; **converged** steps are still reused as long as the level of theory and charge/mult stay the same. If a prior run **did not converge** and the requested command is unchanged, TRICFlow raises an error instead of repeating the same failed calculation—delete or rename that run directory to force a retry.
+Other geomeTRIC options (coordinate system, convergence criteria, `maxiter`, NEB thresholds, etc.) may differ from the cached run; converged steps are still reused as long as the level of theory and charge/mult stay the same. If a prior run did not converge and the requested command is unchanged, TRICFlow raises an error instead of repeating the same failed calculation—delete or rename that run directory to force a retry.
 
 ### Resuming with `run.py`
 
-To resume a workflow, re-run the same `run.py` with the **same `work_dir`** and **unchanged endpoint coordinates** in `initial.xyz`. Keep the **same method, basis, charge, and multiplicity** in your QM input file; you may edit other keywords (e.g. `set maxiter`) without invalidating the cache.
+To resume a workflow, re-run the same `run.py` with the same `work_dir` and unchanged endpoint coordinates in `initial.xyz`. Keep the same method, basis, charge, and multiplicity in your QM input file; you may edit other keywords (e.g. `set maxiter`) without invalidating the cache.
 
 ```python
 workflow = TRICWorkflow(
@@ -161,7 +163,7 @@ pathway = workflow.run(here / "initial.xyz")   # same reactant/product coordinat
 
 Completed elementary steps are loaded from `step_XX/irc_run/` (including IRC post-optimization when present). The workflow continues from the first incomplete step. Set `verbose=1` to see messages such as `Reusing cached optimized endpoints` or `Reusing cached elementary step (IRC + post-opt)`.
 
-To start over entirely, use a new `work_dir` or remove the cached directories. To retry a **failed** step with different settings, delete or rename that step's subdirectory (e.g. `step_00/neb_run/`) before re-running.
+To start over entirely, use a new `work_dir` or remove the cached directories. To retry a failed step with different settings, delete or rename that step's subdirectory (e.g. `step_00/neb_run/`) before re-running.
 
 ---
 
@@ -181,11 +183,11 @@ An example PES with elementary steps obtained using TRICFlow for a reaction betw
 | Two-step pathways | `two_step_cases/two_steps_TS2_TS3`, `two_steps_TS3_TS4`, … | 2 |
 | Three-step attempts | `three_step_cases/three_steps_*_failed` | 3 (did not complete) |
 
-**Single-step** and **two-step** cases in `example/full_workflow/` have been run successfully. **Reactions requiring more than two elementary steps** (the `three_step_cases/*_failed` directories) did not complete with the current workflow logic—those cases are kept as references for future development. The failures most likely stem from insufficient NEB image resolution as the arc length along the pathway grows. Energy-weighted NEB or using a larger number of images (> 21) may mitigate this issue.
+Single-step and two-step cases in `example/full_workflow/` have been run successfully. Reactions requiring more than two elementary steps (the `three_step_cases/*_failed` directories) did not complete with the current workflow logic—those cases are kept as references for future development. The failures most likely stem from insufficient NEB image resolution as the arc length along the pathway grows. Energy-weighted NEB or using a larger number of images (> 21) may mitigate this issue.
 
 ### Alternative path: `two_steps_TS5_TS6`
 
-Connecting **TS5's reactant** to **TS6's product** (`two_step_cases/two_steps_TS5_TS6/`) discovers an alternative three-step route with a **higher energy barrier** than the sequential TS5 → TS6 pathway on the same surface:
+Connecting TS5's reactant to TS6's product (`two_step_cases/two_steps_TS5_TS6/`) discovers an alternative three-step route with a higher energy barrier than the sequential TS5 → TS6 pathway on the same surface:
 
 <img src="images/TS5_TS6.png" width="560">
 
@@ -193,7 +195,7 @@ Connecting **TS5's reactant** to **TS6's product** (`two_step_cases/two_steps_TS
 
 ## Individual calculation steps (`example/individual_steps/`)
 
-Each stage of the workflow can be run standalone through **Python APIs** or **CLI** wrappers. See `example/individual_steps/API/run.py` for a full HCN example (optimize → interpolate → NEB → TS opt → IRC with post-opt), and `example/individual_steps/CLI/` for shell commands.
+Each stage of the workflow can be run standalone through Python APIs or CLI wrappers. See `example/individual_steps/API/run.py` for a full HCN example (optimize → interpolate → NEB → TS opt → IRC with post-opt), and `example/individual_steps/CLI/` for shell commands.
 
 | CLI command | Purpose |
 |-------------|---------|
@@ -206,7 +208,7 @@ Each stage of the workflow can be run standalone through **Python APIs** or **CL
 
 Python entry points: `optimize_frames`, `interpolate`, `run_neb`, `optimize_ts`, `run_irc`, `run_irc_postopt`, `get_energies`, and related helpers in `tricflow`.
 
-**Note:** `tricflow-irc` calculates the Hessian at the TS geometry by default. The full `TRICWorkflow` passes the Hessian file from the preceding TS optimization.
+Note: `tricflow-irc` calculates the Hessian at the TS geometry by default. The full `TRICWorkflow` passes the Hessian file from the preceding TS optimization.
 
 ---
 
@@ -214,7 +216,7 @@ Python entry points: `optimize_frames`, `interpolate`, `run_neb`, `optimize_ts`,
 
 `get_energies` evaluates QM single-point energies (Hartree) for every frame in an XYZ trajectory without re-optimizing geometries—useful for plotting energy profiles along an interpolated or NEB path.
 
-**API** (`example/get_energies/API/run.py`)
+API (`example/get_energies/run.py`):
 
 ```python
 from tricflow import get_energies
@@ -228,7 +230,7 @@ energies = get_energies(
 )
 ```
 
-**CLI** (`example/get_energies/CLI/command.sh`):
+CLI (`example/get_energies/command.sh`):
 
 ```shell
 tricflow-energies hcn_neb_input.xyz --input-file psi4_HCN.in --run-dir . --nt 4 -o energies.json
@@ -242,7 +244,7 @@ Results are written to `energies.json` (or the path given with `-o`).
 
 When elementary steps are computed separately, `assemble_pathways` connects multi-frame XYZ segments by junction aligned RMSD. Segment order among inputs need not be specified—connectivity is inferred, and segments may be reversed automatically.
 
-**API** (`example/assemble_paths/API/run.py`):
+API (`example/assemble_paths/API/run.py`):
 
 ```python
 from tricflow import assemble_pathways
@@ -255,7 +257,7 @@ pathway = results[0]["pathway"]
 pathway.write("full_pathway.xyz")
 ```
 
-**CLI** (`example/assemble_paths/CLI/command.sh`):
+CLI (`example/assemble_paths/CLI/command.sh`):
 
 ```shell
 tricflow-assemble TS3_path.xyz TS4_path.xyz TS5_path.xyz TS6_path.xyz -o full_pathway.xyz
@@ -265,9 +267,9 @@ tricflow-assemble TS3_path.xyz TS4_path.xyz TS5_path.xyz TS6_path.xyz -o full_pa
 
 ## Future work
 
-1. **More engine examples** — worked examples using Q-Chem, TeraChem, Gaussian, and other geomeTRIC-supported packages (current examples use Psi4).
-2. **Basin-detection workflow** — optimize all frames along an interpolated path to locate energy basins, then run the refinement workflow to connect those minima.
-3. **QCFractal integration** — enable the refinement workflow through QCFractal to parallelize elementary steps across compute resources and store results in a database.
+1. More engine examples — worked examples using Q-Chem, TeraChem, Gaussian, and other geomeTRIC-supported packages (current examples use Psi4).
+2. Basin-detection workflow — optimize all frames along an interpolated path to locate energy basins, then run the refinement workflow to connect those minima.
+3. QCFractal integration — enable the refinement workflow through QCFractal to parallelize elementary steps across compute resources and store results in a database.
 
 ---
 

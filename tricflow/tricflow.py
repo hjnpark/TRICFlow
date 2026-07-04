@@ -2908,14 +2908,74 @@ def _topology_pairing_score(unique_ep, IC_target_ep, IC_full_ep) -> int:
     return _topology_overlap_count(IC_full_ep.Internals, IC_target_ep)
 
 
+def _angle_pairing_cost(
+    xyz_ep: np.ndarray,
+    IC_ep,
+    xyz_target: np.ndarray,
+    IC_target,
+) -> float:
+    """Sum of |angle_ep - angle_target| over shared ``Angle`` primitives (lower is better)."""
+    from geometric.internal import Angle
+
+    xyz_ep = np.asarray(xyz_ep, dtype=float).reshape(-1, 3)
+    xyz_target = np.asarray(xyz_target, dtype=float).reshape(-1, 3)
+    total = 0.0
+    n_angles = 0
+    for prim in IC_ep.Internals:
+        if type(prim) is not Angle:
+            continue
+        if prim not in IC_target.Internals:
+            continue
+        total += abs(float(prim.value(xyz_ep)) - float(prim.value(xyz_target)))
+        n_angles += 1
+    if n_angles == 0:
+        return float("inf")
+    return total
+
+
+def _pic_orient_pairing_by_angles(
+    ep0: np.ndarray,
+    ep1: np.ndarray,
+    target_a: np.ndarray,
+    target_b: np.ndarray,
+    IC_ep0,
+    IC_ep1,
+    IC_a,
+    IC_b,
+) -> bool:
+    """
+    Orient by ``Angle`` primitive values when IRC endpoints share identical PIC topology.
+
+    Returns ``True`` when flipped assignment (ep0→b, ep1→a) has lower total angle
+    deviation than direct (ep0→a, ep1→b). Ties default to direct.
+    """
+    cost_direct = (
+        _angle_pairing_cost(ep0, IC_ep0, target_a, IC_a)
+        + _angle_pairing_cost(ep1, IC_ep1, target_b, IC_b)
+    )
+    cost_flipped = (
+        _angle_pairing_cost(ep0, IC_ep0, target_b, IC_b)
+        + _angle_pairing_cost(ep1, IC_ep1, target_a, IC_a)
+    )
+    _log(
+        "PIC identical topology; angle costs (lower=better): "
+        f"ep0→a/ep1→b={cost_direct:.6f}, ep0→b/ep1→a={cost_flipped:.6f}",
+        level=1,
+    )
+    if cost_flipped < cost_direct:
+        return True
+    return False
+
+
 def _pic_orient_pairing(ep0, ep1, target_a, target_b, elem, GeoM) -> bool:
     """
     Decide whether IRC ep0/ep1 align with optimized targets (a, b) or flipped (b, a).
 
     Compares TRIC primitive *topology* only (``Internals`` membership), not values.
     Endpoint-unique primitives are those in one IRC-end IC but not the other;
-    each unique set is matched against the optimized endpoint ICs. When no
-    endpoint-unique primitives exist, the full primitive lists are compared.
+    each unique set is matched against the optimized endpoint ICs. When both IRC
+    endpoints share the same PIC topology, ``Angle`` primitive *values* are
+    compared against the targets instead.
 
     Returns
     -------
@@ -2930,6 +2990,11 @@ def _pic_orient_pairing(ep0, ep1, target_a, target_b, elem, GeoM) -> bool:
 
     unique_ep0 = _topology_unique_primitives(IC_ep0, IC_ep1)
     unique_ep1 = _topology_unique_primitives(IC_ep1, IC_ep0)
+
+    if not unique_ep0 and not unique_ep1:
+        return _pic_orient_pairing_by_angles(
+            ep0, ep1, target_a, target_b, IC_ep0, IC_ep1, IC_a, IC_b,
+        )
 
     score_direct = (
         _topology_pairing_score(unique_ep0, IC_a, IC_ep0)
