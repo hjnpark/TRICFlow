@@ -3460,8 +3460,12 @@ class TRICWorkflow:
     def _anchor_pathway_endpoints(self, pathway, target_a, target_b):
         """Force the merged pathway ends to match the optimized endpoint frames."""
         if getattr(pathway, "xyzs", None):
-            pathway.xyzs[0] = np.asarray(target_a, dtype=float).reshape(-1, 3).copy()
-            pathway.xyzs[-1] = np.asarray(target_b, dtype=float).reshape(-1, 3).copy()
+            if _drms_aligned(pathway.xyzs[0], target_a) < self.rmsd_threshold:
+                pathway.xyzs[0] = np.asarray(target_a, dtype=float).reshape(-1, 3).copy()
+                pathway.xyzs[-1] = np.asarray(target_b, dtype=float).reshape(-1, 3).copy()
+            else:
+                pathway.xyzs[-1] = np.asarray(target_a, dtype=float).reshape(-1, 3).copy()
+                pathway.xyzs[0] = np.asarray(target_b, dtype=float).reshape(-1, 3).copy()
         return pathway
 
     def _verify_pathway_connectivity(
@@ -3477,8 +3481,8 @@ class TRICWorkflow:
         if len(xyzs) < 2:
             raise WorkflowError(f"{label}: pathway must contain at least two frames.")
 
-        start_anchor = _drms_aligned(xyzs[0], target_a)
-        end_anchor = _drms_aligned(xyzs[-1], target_b)
+        start_anchor = min(_drms_aligned(xyzs[0], target_a), _drms_aligned(xyzs[-1], tarqget_a))
+        end_anchor = min(_drms_aligned(xyzs[-1], target_b), _drms_aligned(xyzs[0], target_b))
         if start_anchor >= self.rmsd_threshold:
             raise WorkflowError(
                 f"{label}: pathway start does not match optimized endpoint A "
