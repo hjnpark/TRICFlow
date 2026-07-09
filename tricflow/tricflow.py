@@ -3481,7 +3481,7 @@ class TRICWorkflow:
         if len(xyzs) < 2:
             raise WorkflowError(f"{label}: pathway must contain at least two frames.")
 
-        start_anchor = min(_drms_aligned(xyzs[0], target_a), _drms_aligned(xyzs[-1], tarqget_a))
+        start_anchor = min(_drms_aligned(xyzs[0], target_a), _drms_aligned(xyzs[-1], target_a))
         end_anchor = min(_drms_aligned(xyzs[-1], target_b), _drms_aligned(xyzs[0], target_b))
         if start_anchor >= self.rmsd_threshold:
             raise WorkflowError(
