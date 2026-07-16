@@ -943,8 +943,13 @@ def _verify_irc_endpoints_distinct(
         )
 
 
-def _irc_result_dict(traj, energies, endpoints):
-    return {"trj": traj, "energy": energies, "endpoints": endpoints}
+def _irc_result_dict(traj, energies, endpoints, *, barrierless: bool = False):
+    return {
+        "trj": traj,
+        "energy": energies,
+        "endpoints": endpoints,
+        "barrierless": barrierless,
+    }
 
 
 def _copy_trajectory(mol, GeoM):
@@ -3068,9 +3073,10 @@ class TRICWorkflow:
     pathway targets (aligned RMSD < ``rmsd_threshold``). Targets start as the
     optimized input endpoints; when one IRC end matches a target label, that
     label moves to the other IRC end while the unmatched label stays at the
-    original global minimum until it is matched. When NEB finds no climbing
-    image (no energy barrier), the converged NEB chain is used directly as that
-    elementary segment instead of running TS optimization and IRC. When only one
+    original global minimum until it is matched. When ``step_00`` NEB finds no
+    climbing image (no energy barrier), TS optimization and IRC are skipped, the
+    converged NEB chain is written as ``full_pathway.xyz``, and the workflow
+    ends. When only one
     IRC/NEB end matches, a further elementary step is launched toward the unmatched
     minimum. When neither matches, the segment is oriented by matching TRIC
     primitive topology (``Internals`` membership, not values) at the IRC endpoints
@@ -3228,6 +3234,7 @@ class TRICWorkflow:
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self._step_counter = 0
         self._discovered_ts.clear()
+        self._barrierless_pathway = False
 
         with _log_context(verbosity=self.verbose):
             opt_mols = self._optimize_endpoints(xyz_path)
@@ -3246,12 +3253,13 @@ class TRICWorkflow:
                 initial_target_b.copy(),
                 depth=0,
             )
-            pathway = self._anchor_pathway_endpoints(
-                pathway, initial_target_a, initial_target_b,
-            )
-            self._verify_pathway_connectivity(
-                pathway, initial_target_a, initial_target_b,
-            )
+            if not self._barrierless_pathway:
+                pathway = self._anchor_pathway_endpoints(
+                    pathway, initial_target_a, initial_target_b,
+                )
+                self._verify_pathway_connectivity(
+                    pathway, initial_target_a, initial_target_b,
+                )
 
             out_path = self.work_dir / "full_pathway.xyz"
 
@@ -3716,7 +3724,7 @@ class TRICWorkflow:
                 )
                 energies = list(getattr(chain, "qm_energies", None) or [])
                 endpoints = _neb_endpoints_molecule(chain, self._GeoM, energies=energies or None)
-                return _irc_result_dict(chain, energies, endpoints)
+                return _irc_result_dict(chain, energies, endpoints, barrierless=True)
 
             _log("TS optimization running", level=0)
             ts_mol, ts_energy = optimize_ts(
@@ -3763,12 +3771,21 @@ class TRICWorkflow:
         irc_result = self._run_elementary(start_mol, end_mol, step_id)
 
         trj = irc_result["trj"]
+        step_label = self._step_artifact_paths(step_id)["label"]
+
+        if step_id == 0 and irc_result.get("barrierless"):
+            with _log_context(step=step_label):
+                _log(
+                    "No barrier in step_00; using converged NEB chain as full pathway",
+                    level=0,
+                )
+            self._barrierless_pathway = True
+            return trj
+
         endpoints = irc_result["endpoints"]
         ep0, ep1 = endpoints.xyzs[0], endpoints.xyzs[1]
         # Use post-optimized minima as recursive connection points.
         conn0, conn1 = ep0, ep1
-
-        step_label = self._step_artifact_paths(step_id)["label"]
         d = self._endpoint_rmsds(ep0, ep1, target_a, target_b)
         with _log_context(step=step_label):
             _log(

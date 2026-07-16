@@ -96,6 +96,48 @@ def test_run_elementary_uses_neb_chain_without_ts(tmp_path):
 
     mock_ts.assert_not_called()
     mock_irc.assert_not_called()
+    assert result["barrierless"] is True
     assert len(result["trj"].xyzs) == len(fake_chain.xyzs)
     assert np.allclose(result["trj"].xyzs[0], fake_chain.xyzs[0])
     assert np.allclose(result["trj"].xyzs[-1], fake_chain.xyzs[-1])
+
+
+def test_step_00_barrierless_ends_workflow_with_neb_chain(tmp_path):
+    assert PSI4_HCN.is_file(), f"test input missing: {PSI4_HCN}"
+
+    workflow = tricflow.TRICWorkflow(PSI4_HCN, work_dir=tmp_path, verbose=0)
+    start = workflow._single_frame_mol(workflow._GeoM(), "start")
+    end = workflow._single_frame_mol(workflow._GeoM(), "end")
+    start.elem = end.elem = ["C", "N", "H"]
+    start.xyzs[0] = np.array([[0.0, 0.0, 0.0], [1.0, 0.0, 0.0], [2.0, 0.0, 0.0]])
+    end.xyzs[0] = np.array([[0.5, 0.0, 0.0], [1.5, 0.0, 0.0], [2.5, 0.0, 0.0]])
+    target_a = start.xyzs[0].copy()
+    target_b = end.xyzs[0].copy()
+
+    fake_chain = _fake_neb_chain()
+
+    def fake_interpolate(*args, **kwargs):
+        out = workflow._GeoM()
+        out.elem = list(start.elem)
+        out.xyzs = [start.xyzs[0].copy(), end.xyzs[0].copy()]
+        run_dir = Path(kwargs.get("run_dir", tmp_path))
+        out.write(str(run_dir / "interpolated.xyz"))
+        return out
+
+    with patch("tricflow.tricflow.interpolate", side_effect=fake_interpolate), patch(
+        "tricflow.tricflow.run_neb",
+        return_value={"optimized_chain": fake_chain, "ts_guess": None},
+    ), patch("tricflow.tricflow.optimize_ts") as mock_ts, patch(
+        "tricflow.tricflow.run_irc"
+    ) as mock_irc, patch.object(
+        workflow, "_solve", wraps=workflow._solve,
+    ) as mock_solve:
+        pathway = workflow._solve(start, end, target_a, target_b, depth=0)
+
+    mock_ts.assert_not_called()
+    mock_irc.assert_not_called()
+    mock_solve.assert_called_once()
+    assert workflow._barrierless_pathway is True
+    assert len(pathway.xyzs) == len(fake_chain.xyzs)
+    assert np.allclose(pathway.xyzs[0], fake_chain.xyzs[0])
+    assert np.allclose(pathway.xyzs[-1], fake_chain.xyzs[-1])
