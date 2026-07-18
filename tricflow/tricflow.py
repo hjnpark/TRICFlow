@@ -1955,7 +1955,6 @@ def _run_trics_interpolation(
     if GeoM is None:
         raise RuntimeError("geomeTRIC is required for TRICS interpolation.")
     try:
-        from geometric.config import config_dir
         from geometric.interpolate import run_interpolator
     except ImportError as exc:
         raise RuntimeError(
@@ -1987,11 +1986,14 @@ def _run_trics_interpolation(
     if not log_path.is_absolute():
         log_path = run_dir / log_path.name
 
-    log_ini = os.path.join(config_dir, "logFile.ini")
+    # File-only logging: geomeTRIC's stock log.ini also mirrors to stderr, which
+    # floods remote jobs. Ship our own config so we do not depend on a non-standard
+    # geometric/config/logFile.ini.
+    log_ini = str(Path(__file__).resolve().parent / "log_file_only.ini")
     if not os.path.isfile(log_ini):
         raise FileNotFoundError(
-            f"geomeTRIC logging config not found: {log_ini}. "
-            "Reinstall geomeTRIC from the interpolate branch."
+            f"TRICFlow logging config not found: {log_ini}. "
+            "Reinstall TRICFlow (package data log_file_only.ini is missing)."
         )
 
     request_key = _interpolation_request_key(
