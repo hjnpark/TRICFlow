@@ -113,7 +113,7 @@ def test_single_match_ep1_to_b_continues_until_both_targets_match(tmp_path):
 
     wf._step_counter = 0
     with patch.object(tricflow.TRICWorkflow, "_run_elementary", mock_elementary):
-        pathway = wf._solve(
+        pathway, assembly_index = wf._solve(
             start_mol,
             end_mol,
             target_a.copy(),
@@ -123,3 +123,5 @@ def test_single_match_ep1_to_b_continues_until_both_targets_match(tmp_path):
 
     assert elementary_calls == [0, 1]
     assert len(pathway.xyzs) >= 3
+    assert [e["step"] for e in assembly_index] == ["step_01", "step_00"]
+    assert all(isinstance(e["flipped"], bool) for e in assembly_index)

@@ -148,12 +148,26 @@ def test_pathway_assembly_from_refined_steps(tmp_path):
 
     workflow._step_counter = 0
     with patch.object(tricflow.TRICWorkflow, "_run_elementary", mock_elementary):
-        pathway = workflow._solve(opt[0], opt[-1], target_a.copy(), target_b.copy(), depth=0)
+        pathway, assembly_index = workflow._solve(
+            opt[0], opt[-1], target_a.copy(), target_b.copy(), depth=0,
+        )
 
     pathway = workflow._anchor_pathway_endpoints(pathway, target_a, target_b)
 
     # Eight mocked segments plus one terminal connector (dynamic-target continuation).
     assert len(pathway.xyzs) == 1078
+    assert len(assembly_index) >= 2
+    assert all("step" in e and "flipped" in e for e in assembly_index)
+    # Discovery order is not pathway order; assembly index is A → B.
+    assert assembly_index[0]["step"].startswith("step_")
+
+    index_path = tmp_path / "index.txt"
+    workflow._write_pathway_index(index_path, assembly_index)
+    text = index_path.read_text()
+    assert "full_pathway.xyz" in text
+    assert "flipped" in text
+    for entry in assembly_index:
+        assert entry["step"] in text
 
     assert tricflow._drms_aligned(pathway.xyzs[0], target_a) < workflow.rmsd_threshold
     assert tricflow._drms_aligned(pathway.xyzs[-1], target_b) < workflow.rmsd_threshold

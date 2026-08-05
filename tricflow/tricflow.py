@@ -1303,231 +1303,234 @@ def optimize_frames(input_file, xyz_file, *, qm_program="psi4", run_dir=None, **
     base_for_run = _resolve_run_dir(run_dir)
     opt_cmd_kwargs = {**opt_kwargs, "verbose": verbose}
 
-    try:
-        for frame_num in range(n_frames):
-            current_run_dir = base_for_run / f"frame_{frame_num}"
-            coords_xyz = current_run_dir / "coords.xyz"
-            dest_input = current_run_dir / user_input.name
-            prefix = _output_prefix(dest_input, user_prefix)
-            opt_path = current_run_dir / _prefix_optim_xyz(prefix)
+    for frame_num in range(n_frames):
+        current_run_dir = base_for_run / f"frame_{frame_num}"
+        coords_xyz = current_run_dir / "coords.xyz"
+        dest_input = current_run_dir / user_input.name
+        prefix = _output_prefix(dest_input, user_prefix)
+        opt_path = current_run_dir / _prefix_optim_xyz(prefix)
 
-            # Build the command we intend to run (for cache command comparison).
-            # We do this early so the cache logic can compare against the logged command.
-            cmd_input = _geometric_argv_path(dest_input, current_run_dir)
-            cmd_coords = _geometric_argv_path(coords_xyz, current_run_dir)
-            cmd_list = _build_geometric_cmd(
-                "opt",
-                cmd_input,
-                cmd_coords,
-                qm_program,
-                opt_cmd_kwargs,
-                prefix=user_prefix,
-            )
-            intended_cmd_str = " ".join(cmd_list)
+        # Build the command we intend to run (for cache command comparison).
+        # We do this early so the cache logic can compare against the logged command.
+        cmd_input = _geometric_argv_path(dest_input, current_run_dir)
+        cmd_coords = _geometric_argv_path(coords_xyz, current_run_dir)
+        cmd_list = _build_geometric_cmd(
+            "opt",
+            cmd_input,
+            cmd_coords,
+            qm_program,
+            opt_cmd_kwargs,
+            prefix=user_prefix,
+        )
+        intended_cmd_str = " ".join(cmd_list)
 
-            reused = False
-            if (current_run_dir.exists()
-                    and coords_xyz.exists()
-                    and dest_input.exists()
-                    and opt_path.exists()):
-                try:
-                    cached_m = GeoM(str(coords_xyz))
-                    if cached_m.xyzs and len(cached_m.xyzs) > 0:
-                        if np.allclose(M.xyzs[frame_num], cached_m.xyzs[0], atol=1e-8):
-                            preferred_log = current_run_dir / _prefix_log(prefix)
-                            log_path = (
-                                preferred_log
-                                if preferred_log.is_file()
-                                else _find_converged_log_in_dir(
-                                    current_run_dir,
-                                    preferred=preferred_log,
-                                )
-                            )
-                            artifact_hit = _optimization_artifact_cache_hit(
+        reused = False
+        if (current_run_dir.exists()
+                and coords_xyz.exists()
+                and dest_input.exists()
+                and opt_path.exists()):
+            try:
+                cached_m = GeoM(str(coords_xyz))
+                if cached_m.xyzs and len(cached_m.xyzs) > 0:
+                    if np.allclose(M.xyzs[frame_num], cached_m.xyzs[0], atol=1e-8):
+                        preferred_log = current_run_dir / _prefix_log(prefix)
+                        log_path = (
+                            preferred_log
+                            if preferred_log.is_file()
+                            else _find_converged_log_in_dir(
                                 current_run_dir,
-                                user_input,
-                                M.xyzs[frame_num],
-                                prefix,
-                                GeoM,
-                                qm_program=qm_program,
+                                preferred=preferred_log,
                             )
-                            decision = _converged_cache_decision(
-                                log_path=log_path,
-                                cached_input=dest_input,
-                                current_input=user_input,
-                                prev_cmd_str=_read_logged_geometric_cmd(
-                                    log_path,
-                                    run_dir=current_run_dir,
-                                ),
-                                intended_cmd_str=intended_cmd_str,
-                                label=f"frame {frame_num}",
-                                qm_program=qm_program,
-                                allow_artifact_fallback=True,
-                                artifact_ok=artifact_hit,
+                        )
+                        artifact_hit = _optimization_artifact_cache_hit(
+                            current_run_dir,
+                            user_input,
+                            M.xyzs[frame_num],
+                            prefix,
+                            GeoM,
+                            qm_program=qm_program,
+                        )
+                        decision = _converged_cache_decision(
+                            log_path=log_path,
+                            cached_input=dest_input,
+                            current_input=user_input,
+                            prev_cmd_str=_read_logged_geometric_cmd(
+                                log_path,
+                                run_dir=current_run_dir,
+                            ),
+                            intended_cmd_str=intended_cmd_str,
+                            label=f"frame {frame_num}",
+                            qm_program=qm_program,
+                            allow_artifact_fallback=True,
+                            artifact_ok=artifact_hit,
+                        )
+                        if decision == "invalidate":
+                            _rename_conflicting_cache_dir(current_run_dir)
+                        elif decision == "fail":
+                            _raise_failed_cache(
+                                f"Optimization frame {frame_num} in {current_run_dir}",
+                                log_path,
                             )
-                            if decision == "invalidate":
-                                _rename_conflicting_cache_dir(current_run_dir)
-                            elif decision == "fail":
-                                _raise_failed_cache(
-                                    f"Optimization frame {frame_num} in {current_run_dir}",
-                                    log_path,
-                                )
-                            elif decision == "reuse":
-                                if log_path is None:
-                                    _log(
-                                        f"Reusing optimization artifacts for frame {frame_num} "
-                                        f"from {current_run_dir}",
-                                        level=1,
-                                    )
-                                loaded = GeoM(str(opt_path))
-                                opt_mol = loaded[-1] if len(loaded) > 0 else loaded
-
-                                if opt_mol.xyzs:
-                                    collected_xyzs.append(opt_mol.xyzs[0].copy())
-                                else:
-                                    collected_xyzs.append(M.xyzs[frame_num].copy())
-
-                                cmm = (opt_mol.comms[0]
-                                       if getattr(opt_mol, "comms", None)
-                                       else f"cached frame {frame_num}")
-                                collected_comms.append(cmm)
-
-                                energy = _parse_energy_hartree(
-                                    opt_mol,
-                                    comment=cmm,
-                                    log_path=log_path or (current_run_dir / _prefix_log(prefix)),
-                                )
-                                energies.append(energy)
-
+                        elif decision == "reuse":
+                            if log_path is None:
                                 _log(
-                                    f"Reusing cached result for frame {frame_num} from {current_run_dir}",
+                                    f"Reusing optimization artifacts for frame {frame_num} "
+                                    f"from {current_run_dir}",
                                     level=1,
                                 )
-                                reused = True
-                            elif log_path is None and not artifact_hit:
-                                _log(
-                                    f"No converged optimization log or artifacts for frame {frame_num}; "
-                                    "will re-optimize.",
-                                    level=1,
-                                )
-                except Exception as cache_err:
-                    _log(f"Cache check failed for frame {frame_num} ({cache_err}); will re-optimize.", level=1)
+                            loaded = GeoM(str(opt_path))
+                            opt_mol = loaded[-1] if len(loaded) > 0 else loaded
 
-            if reused:
-                continue
+                            if opt_mol.xyzs:
+                                collected_xyzs.append(opt_mol.xyzs[0].copy())
+                            else:
+                                collected_xyzs.append(M.xyzs[frame_num].copy())
 
-            # No usable cache — perform the optimization (or re-optimization).
-            current_run_dir.mkdir(parents=True, exist_ok=True)
+                            cmm = (opt_mol.comms[0]
+                                   if getattr(opt_mol, "comms", None)
+                                   else f"cached frame {frame_num}")
+                            collected_comms.append(cmm)
 
-            # Copy template (never mutate user's original)
-            shutil.copy(user_input, dest_input)
+                            energy = _parse_energy_hartree(
+                                opt_mol,
+                                comment=cmm,
+                                log_path=log_path or (current_run_dir / _prefix_log(prefix)),
+                            )
+                            energies.append(energy)
 
-            # Fresh single-frame Molecule for the coords file (avoids state corruption
-            # from slicing/iterating the source multi-frame M).
-            single = GeoM()
-            single.elem = list(M.elem) if hasattr(M, 'elem') else []
-            single.xyzs = [M.xyzs[frame_num].copy()]
-            if hasattr(M, 'comms') and M.comms and len(M.comms) > frame_num:
-                single.comms = [M.comms[frame_num]]
-            else:
-                single.comms = [f"Frame {frame_num} from {xyz_input.name}"]
+                            _log(
+                                f"Reusing cached result for frame {frame_num} from {current_run_dir}",
+                                level=1,
+                            )
+                            reused = True
+                        elif log_path is None and not artifact_hit:
+                            _log(
+                                f"No converged optimization log or artifacts for frame {frame_num}; "
+                                "will re-optimize.",
+                                level=1,
+                            )
+            except Exception as cache_err:
+                _log(f"Cache check failed for frame {frame_num} ({cache_err}); will re-optimize.", level=1)
 
-            coords_xyz = current_run_dir / "coords.xyz"
-            single.write(str(coords_xyz))
+        if reused:
+            continue
 
-            cwd = current_run_dir
-            input_for_geo = dest_input
+        # No usable cache — perform the optimization (or re-optimization).
+        current_run_dir.mkdir(parents=True, exist_ok=True)
 
-            # Command: geometric-optimize <template> --engine <qm> --coords <theframecoords> ...
-            base_cmd = _build_geometric_cmd(
-                "opt",
-                _geometric_argv_path(input_for_geo, cwd),
-                _geometric_argv_path(coords_xyz, cwd),
-                qm_program,
-                opt_cmd_kwargs,
-                prefix=user_prefix,
+        # Copy template (never mutate user's original)
+        shutil.copy(user_input, dest_input)
+
+        # Fresh single-frame Molecule for the coords file (avoids state corruption
+        # from slicing/iterating the source multi-frame M).
+        single = GeoM()
+        single.elem = list(M.elem) if hasattr(M, 'elem') else []
+        single.xyzs = [M.xyzs[frame_num].copy()]
+        if hasattr(M, 'comms') and M.comms and len(M.comms) > frame_num:
+            single.comms = [M.comms[frame_num]]
+        else:
+            single.comms = [f"Frame {frame_num} from {xyz_input.name}"]
+
+        coords_xyz = current_run_dir / "coords.xyz"
+        single.write(str(coords_xyz))
+
+        cwd = current_run_dir
+        input_for_geo = dest_input
+
+        # Command: geometric-optimize <template> --engine <qm> --coords <theframecoords> ...
+        base_cmd = _build_geometric_cmd(
+            "opt",
+            _geometric_argv_path(input_for_geo, cwd),
+            _geometric_argv_path(coords_xyz, cwd),
+            qm_program,
+            opt_cmd_kwargs,
+            prefix=user_prefix,
+        )
+
+        _log(f"Running: {base_cmd}", level=1)
+        _log(f"Working directory: {cwd}", level=1)
+        _write_last_command(cwd, base_cmd)
+
+        result = subprocess.run(
+            base_cmd,
+            cwd=str(cwd),
+            capture_output=True,
+            text=True,
+            **_subprocess_timeout_kwargs(opt_kwargs),
+        )
+
+        log_path = cwd / _prefix_log(prefix)
+        if result.returncode != 0:
+            _log_warn(
+                f"geometric-optimize failed for frame {frame_num} "
+                f"(exit {result.returncode}). stderr tail:"
+            )
+            _log_warn(result.stderr[-1500:] if result.stderr else "(no stderr)")
+            raise OptimizationError(
+                f"Optimization of frame {frame_num} did not converge "
+                f"(geomeTRIC exit {result.returncode}). Check {log_path}."
             )
 
-            _log(f"Running: {base_cmd}", level=1)
-            _log(f"Working directory: {cwd}", level=1)
-            _write_last_command(cwd, base_cmd)
+        # geometric's <prefix>_optim.xyz often contains the optimization
+        # trajectory; take the last frame as the optimized structure.
+        opt_path = cwd / _prefix_optim_xyz(prefix)
+        if not opt_path.exists():
+            cands = sorted(cwd.glob("*optim*.xyz"))
+            if cands:
+                opt_path = cands[-1]
+            else:
+                raise OptimizationError(
+                    f"No optimized .xyz output found for frame {frame_num} in {cwd}."
+                )
 
-            result = subprocess.run(
-                base_cmd,
-                cwd=str(cwd),
-                capture_output=True,
-                text=True,
-                **_subprocess_timeout_kwargs(opt_kwargs),
+        if not _check_log_for_caching(log_path):
+            raise OptimizationError(
+                f"Optimization of frame {frame_num} finished without a convergence "
+                f"marker in {log_path.name}."
             )
 
-            # Load the result even on non-zero return (geometric returns non-zero on
-            # "max iterations reached" or other non-fatal "did not fully converge").
-            # We accept the last geometry present in the output trajectory as the
-            # best available result for this frame (consistent with partial-result
-            # tolerance used in tests and higher-level workflows).
-            if result.returncode != 0:
-                _log_warn("geometric-optimize returned non-zero (may be maxiter or converge criteria). stderr tail:")
-                _log_warn(result.stderr[-1500:] if result.stderr else "(no stderr)")
+        loaded = GeoM(str(opt_path))
+        opt_mol = loaded[-1] if len(loaded) > 0 else loaded
 
-            # Load the result. geometric's <prefix>_optim.xyz often contains the
-            # optimization trajectory; we take the last frame as the optimized structure.
-            opt_path = cwd / _prefix_optim_xyz(prefix)
-            if not opt_path.exists():
-                # be flexible with output names
-                cands = sorted(cwd.glob("*optim*.xyz"))
-                if cands:
-                    opt_path = cands[-1]
-                else:
-                    _log_warn("No optimized .xyz output found; hard failure for this frame.")
-                    raise RuntimeError(f"No optimized .xyz output found in {cwd}")
-
-            loaded = GeoM(str(opt_path))
-            opt_mol = loaded[-1] if len(loaded) > 0 else loaded
-
-            # Collect the (single) optimized frame data
-            if opt_mol.xyzs:
-                collected_xyzs.append(opt_mol.xyzs[0].copy())
-            else:
-                # fallback, should not happen
-                collected_xyzs.append(M.xyzs[frame_num].copy())
-
-            cmm = opt_mol.comms[0] if getattr(opt_mol, "comms", None) else f"optimized frame {frame_num}"
-            collected_comms.append(cmm)
-
-            combined_log = (result.stdout or "") + "\n" + (result.stderr or "")
-            energy = _parse_energy_hartree(
-                opt_mol,
-                comment=cmm,
-                log_path=cwd / _prefix_log(prefix),
-                combined_log=combined_log,
+        if not getattr(opt_mol, "xyzs", None):
+            raise OptimizationError(
+                f"Optimization of frame {frame_num} produced an empty geometry in {opt_path}."
             )
-            energies.append(energy)
+        collected_xyzs.append(opt_mol.xyzs[0].copy())
 
-            if energy is not None:
-                _log(f"Optimization complete. Energy = {energy:.8f} Ha", level=1)
-            else:
-                _log("Optimization complete (energy not parsed)", level=1)
+        cmm = opt_mol.comms[0] if getattr(opt_mol, "comms", None) else f"optimized frame {frame_num}"
+        collected_comms.append(cmm)
 
-            # Leave per-frame dirs in place (user can inspect; no auto-clean when using run_dir or cwd)
+        combined_log = (result.stdout or "") + "\n" + (result.stderr or "")
+        energy = _parse_energy_hartree(
+            opt_mol,
+            comment=cmm,
+            log_path=log_path,
+            combined_log=combined_log,
+        )
+        energies.append(energy)
 
-        # Build final multi-frame result with a fresh Molecule + direct list assignment.
-        OptMs = GeoM()
-        if hasattr(M, 'elem') and M.elem:
-            OptMs.elem = list(M.elem)
-        OptMs.xyzs = collected_xyzs
-        OptMs.comms = collected_comms
-        # Attach energies for downstream convenience (len matches ns)
-        if energies:
-            OptMs.qm_energies = energies
+        if energy is not None:
+            _log(f"Optimization complete. Energy = {energy:.8f} Ha", level=1)
+        else:
+            _log("Optimization complete (energy not parsed)", level=1)
 
-        return OptMs
+    # Build final multi-frame result with a fresh Molecule + direct list assignment.
+    OptMs = GeoM()
+    if hasattr(M, 'elem') and M.elem:
+        OptMs.elem = list(M.elem)
+    OptMs.xyzs = collected_xyzs
+    OptMs.comms = collected_comms
+    if energies:
+        OptMs.qm_energies = energies
 
-    except Exception as e:
-        _log_warn(f"optimize_frames failed: {e}")
-        OptMs = GeoM()
-        if 'M' in locals() and hasattr(M, 'elem') and M.elem:
-            OptMs.elem = list(M.elem)
-        return OptMs
+    if len(collected_xyzs) != n_frames:
+        raise OptimizationError(
+            f"optimize_frames expected {n_frames} optimized structures, "
+            f"got {len(collected_xyzs)}."
+        )
+
+    return OptMs
 
 
 # =============================================================================
@@ -3085,8 +3088,11 @@ class TRICWorkflow:
     to the optimized endpoint frames, then both directions are refined recursively.
 
     Writes ``full_pathway.xyz`` under ``work_dir`` and returns the merged pathway
-    as a geomeTRIC ``Molecule``. Barrier-crossing elementary segments include the
-    full post-optimization trajectories at both endpoints (opt + IRC + opt).
+    as a geomeTRIC ``Molecule``. When more than one elementary ``step_XX`` is
+    concatenated, also writes ``index.txt`` listing those steps in pathway order
+    and whether each raw trajectory was flipped. Barrier-crossing elementary
+    segments include the full post-optimization trajectories at both endpoints
+    (opt + IRC + opt).
 
     Pass geomeTRIC options per calculation type via ``neb``, ``opt``, ``ts``,
     ``irc``, and ``interp`` dicts. Each dict is forwarded as ``**kwargs`` to the
@@ -3215,14 +3221,24 @@ class TRICWorkflow:
             else:
                 _log(f"Optimizing endpoints from {xyz_path.name}...", level=0)
                 opt_dir = self.work_dir / "opt_runs"
-                opt_mols = optimize_frames(
-                    str(self.input_file),
-                    str(xyz_path),
-                    qm_program=self.qm_program,
-                    run_dir=str(opt_dir),
-                    nt=self.nt,
-                    **self._calc_kwargs("opt"),
-                )
+                try:
+                    opt_mols = optimize_frames(
+                        str(self.input_file),
+                        str(xyz_path),
+                        qm_program=self.qm_program,
+                        run_dir=str(opt_dir),
+                        nt=self.nt,
+                        **self._calc_kwargs("opt"),
+                    )
+                except OptimizationError as err:
+                    raise WorkflowError(
+                        f"Endpoint optimization failed; aborting workflow. {err}"
+                    ) from err
+                if len(getattr(opt_mols, "xyzs", []) or []) < 2:
+                    raise WorkflowError(
+                        "Endpoint optimization did not produce two optimized structures; "
+                        "aborting workflow."
+                    )
                 opt_mols.write(str(opt_path))
                 _log(f"Endpoint optimization complete → {opt_path.name}", level=0)
         return opt_mols
@@ -3248,7 +3264,7 @@ class TRICWorkflow:
             end_mol = opt_mols[-1]
 
             _log("Discovering elementary reaction pathway...", level=0)
-            pathway = self._solve(
+            pathway, assembly_index = self._solve(
                 start_mol,
                 end_mol,
                 initial_target_a.copy(),
@@ -3267,10 +3283,20 @@ class TRICWorkflow:
 
             pathway.align()
             pathway.write(str(out_path))
-            _log(
-                f"Pathway complete ({len(pathway.xyzs)} frames) → {out_path.name}",
-                level=0,
-            )
+            if len(assembly_index) > 1:
+                index_path = self.work_dir / "index.txt"
+                self._write_pathway_index(index_path, assembly_index)
+                _log(
+                    f"Pathway complete ({len(pathway.xyzs)} frames, "
+                    f"{len(assembly_index)} elementary steps) → {out_path.name}; "
+                    f"assembly order → {index_path.name}",
+                    level=0,
+                )
+            else:
+                _log(
+                    f"Pathway complete ({len(pathway.xyzs)} frames) → {out_path.name}",
+                    level=0,
+                )
             return pathway
 
     def _step_artifact_paths(self, step_id: int):
@@ -3434,6 +3460,51 @@ class TRICWorkflow:
         if reverse_cost < forward_cost:
             mol = self._reverse_trajectory(mol)
         return mol
+
+    @staticmethod
+    def _trajectory_orientation_flipped(raw_trj, oriented_trj) -> bool:
+        """True if *oriented_trj* runs opposite to the raw elementary trajectory."""
+        raw_xyzs = getattr(raw_trj, "xyzs", None) or []
+        ori_xyzs = getattr(oriented_trj, "xyzs", None) or []
+        if len(raw_xyzs) < 2 or len(ori_xyzs) < 2:
+            return False
+        forward = (
+            _drms_aligned(ori_xyzs[0], raw_xyzs[0])
+            + _drms_aligned(ori_xyzs[-1], raw_xyzs[-1])
+        )
+        reverse = (
+            _drms_aligned(ori_xyzs[0], raw_xyzs[-1])
+            + _drms_aligned(ori_xyzs[-1], raw_xyzs[0])
+        )
+        return reverse < forward
+
+    def _segment_index_entry(self, step_label: str, raw_trj, oriented_trj) -> Dict[str, Any]:
+        """Describe how one elementary *step_label* appears in the assembled pathway."""
+        n_frames = len(getattr(oriented_trj, "xyzs", None) or [])
+        return {
+            "step": step_label,
+            "flipped": self._trajectory_orientation_flipped(raw_trj, oriented_trj),
+            "n_frames": n_frames,
+        }
+
+    def _write_pathway_index(
+        self,
+        path: Union[str, Path],
+        assembly_index: Sequence[Dict[str, Any]],
+    ) -> None:
+        """Write assembly order for multi-step ``full_pathway.xyz`` to *path*."""
+        lines = [
+            "# Order of elementary steps concatenated into full_pathway.xyz",
+            "# (first row is the pathway start / target A side).",
+            "# order  step      flipped  n_frames",
+        ]
+        for i, entry in enumerate(assembly_index, start=1):
+            flipped = "yes" if entry.get("flipped") else "no"
+            n_frames = entry.get("n_frames", "")
+            lines.append(
+                f"{i:<7d}{entry['step']:<10s}{flipped:<9s}{n_frames}"
+            )
+        Path(path).write_text("\n".join(lines) + "\n")
 
     def _resolve_target_pairing(self, ep0, ep1, target_a, target_b, elem):
         """
@@ -3763,6 +3834,18 @@ class TRICWorkflow:
             return irc_result
 
     def _solve(self, start_mol, end_mol, target_a, target_b, depth: int):
+        """
+        Discover and concatenate elementary segments between *start_mol* and *end_mol*.
+
+        Returns
+        -------
+        pathway : geomeTRIC Molecule
+            Oriented A → B trajectory for this subproblem.
+        assembly_index : list of dict
+            Elementary steps in pathway order. Each entry has ``step`` (e.g.
+            ``step_00``), ``flipped`` (whether the raw elementary trajectory was
+            reversed in the assembly), and ``n_frames``.
+        """
         if depth >= self.max_depth:
             raise WorkflowError(
                 f"Maximum workflow depth ({self.max_depth}) exceeded."
@@ -3782,7 +3865,7 @@ class TRICWorkflow:
                     level=0,
                 )
             self._barrierless_pathway = True
-            return trj
+            return trj, [self._segment_index_entry(step_label, trj, trj)]
 
         endpoints = irc_result["endpoints"]
         ep0, ep1 = endpoints.xyzs[0], endpoints.xyzs[1]
@@ -3807,7 +3890,7 @@ class TRICWorkflow:
                     f"(ep0→B, ep1→A); oriented pathway A → B",
                     level=0,
                 )
-            return oriented
+            return oriented, [self._segment_index_entry(step_label, trj, oriented)]
 
         single = self._single_endpoint_match(ep0, ep1, target_a, target_b)
         if single is not None:
@@ -3830,50 +3913,55 @@ class TRICWorkflow:
             if ep_name == "ep0" and t_name == "b":
                 junction = conn1
                 core = self._orient_trajectory(trj, junction, matched_target)
-                ext = self._solve(
+                core_idx = [self._segment_index_entry(step_label, trj, core)]
+                ext, ext_idx = self._solve(
                     missing_mol,
                     self._single_frame_mol(junction),
                     next_target_a,
                     next_target_b,
                     depth + 1,
                 )
-                return self._concat_segments([ext, core])
+                return self._concat_segments([ext, core]), ext_idx + core_idx
             if ep_name == "ep1" and t_name == "a":
                 junction = conn0
                 core = self._orient_trajectory(trj, matched_target, junction)
-                ext = self._solve(
+                core_idx = [self._segment_index_entry(step_label, trj, core)]
+                ext, ext_idx = self._solve(
                     self._single_frame_mol(junction),
                     missing_mol,
                     next_target_a,
                     next_target_b,
                     depth + 1,
                 )
-                return self._concat_segments([core, ext])
+                return self._concat_segments([core, ext]), core_idx + ext_idx
             if ep_name == "ep0" and t_name == "a":
                 junction = conn1
                 core = self._orient_trajectory(trj, matched_target, junction)
-                ext = self._solve(
+                core_idx = [self._segment_index_entry(step_label, trj, core)]
+                ext, ext_idx = self._solve(
                     self._single_frame_mol(junction),
                     missing_mol,
                     next_target_a,
                     next_target_b,
                     depth + 1,
                 )
-                return self._concat_segments([core, ext])
+                return self._concat_segments([core, ext]), core_idx + ext_idx
             if ep_name == "ep1" and t_name == "b":
                 junction = conn0
                 core = self._orient_trajectory(trj, junction, matched_target)
-                ext = self._solve(
+                core_idx = [self._segment_index_entry(step_label, trj, core)]
+                ext, ext_idx = self._solve(
                     missing_mol,
                     self._single_frame_mol(junction),
                     next_target_a,
                     next_target_b,
                     depth + 1,
                 )
-                return self._concat_segments([ext, core])
+                return self._concat_segments([ext, core]), ext_idx + core_idx
 
         # No endpoint matches: orient via distinguishing PIC overlaps, then refine.
         mid, flipped = self._orient_trajectory_to_targets(trj, ep0, ep1, target_a, target_b)
+        mid_entry = self._segment_index_entry(step_label, trj, mid)
         if flipped:
             ep0_target, ep1_target = target_b, target_a
             missing_start = not self._matches(d[("ep0", "b")])
@@ -3889,9 +3977,10 @@ class TRICWorkflow:
 
         raw_start, raw_end = mid.xyzs[0], mid.xyzs[-1]
         segments = []
+        assembly_index: List[Dict[str, Any]] = []
 
         if missing_start:
-            left = self._solve(
+            left, left_idx = self._solve(
                 start_mol_ref,
                 self._single_frame_mol(raw_start),
                 ep0_target,
@@ -3899,11 +3988,13 @@ class TRICWorkflow:
                 depth + 1,
             )
             segments.append(left)
+            assembly_index.extend(left_idx)
 
         segments.append(mid)
+        assembly_index.append(mid_entry)
 
         if missing_end:
-            right = self._solve(
+            right, right_idx = self._solve(
                 self._single_frame_mol(raw_end),
                 end_mol_ref,
                 raw_end,
@@ -3911,8 +4002,9 @@ class TRICWorkflow:
                 depth + 1,
             )
             segments.append(right)
+            assembly_index.extend(right_idx)
 
-        return self._concat_segments(segments)
+        return self._concat_segments(segments), assembly_index
 
 
 def get_energies(

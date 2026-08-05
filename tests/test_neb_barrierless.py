@@ -132,12 +132,17 @@ def test_step_00_barrierless_ends_workflow_with_neb_chain(tmp_path):
     ) as mock_irc, patch.object(
         workflow, "_solve", wraps=workflow._solve,
     ) as mock_solve:
-        pathway = workflow._solve(start, end, target_a, target_b, depth=0)
+        pathway, assembly_index = workflow._solve(
+            start, end, target_a, target_b, depth=0,
+        )
 
     mock_ts.assert_not_called()
     mock_irc.assert_not_called()
     mock_solve.assert_called_once()
     assert workflow._barrierless_pathway is True
+    assert len(assembly_index) == 1
+    assert assembly_index[0]["step"] == "step_00"
+    assert assembly_index[0]["flipped"] is False
     assert len(pathway.xyzs) == len(fake_chain.xyzs)
     assert np.allclose(pathway.xyzs[0], fake_chain.xyzs[0])
     assert np.allclose(pathway.xyzs[-1], fake_chain.xyzs[-1])
